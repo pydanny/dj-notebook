@@ -12,7 +12,6 @@ As it accesses the database, it requires that:
 
 
 import base64
-import pathlib
 import os
 import sys
 
@@ -57,7 +56,7 @@ class DiagramClass:
 
         # Add the base_class to the graph
         self.graph.add(
-            f'  class {self.namify(self.base_class)}["{self.base_class.__module__}::{self.base_class.__name__}"]'
+            f'  class {self.namify(self.base_class)}["{self.base_class.__module__}::{self.base_class.__name__}"]'  # noqa: E501
         )
 
         # Draw connections between the base_class and its ancestors
@@ -67,7 +66,8 @@ class DiagramClass:
         self.display_graph()
 
     def draw_connections(self, class_: type) -> None:
-        """Draw connections between a class and its ancestors, includes nodes and edges."""
+        """Draw connections between a class and its ancestors,
+        includes nodes and edges."""
         for base in class_.__bases__:
             if base is not object:
                 base_name = self.namify(base)
@@ -96,7 +96,8 @@ class DiagramClass:
 
 
 class Plus:
-    """Location of all the objects loaded by shell_plus and extra Jupyter-specific utilities."""
+    """Location of all the objects loaded by shell_plus and extra
+    Jupyter-specific utilities."""
 
     def __init__(self, helpers: dict[str, object]) -> None:
         self.helpers = helpers

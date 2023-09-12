@@ -5,7 +5,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("book_outlet", "0004_author_alter_book_slug_alter_book_author"),
     ]
