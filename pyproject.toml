@@ -19,7 +19,11 @@ classifiers = [
 
 ]
 license = {text = "GNU General Public License v3"}
-dependencies = []
+dependencies = [
+  "django",
+  "django-extensions",
+  "ipython"
+]
 
 [project.optional-dependencies]
 test = [
