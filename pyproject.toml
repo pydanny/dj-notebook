@@ -1,0 +1,68 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dj_notebook"
+version = "0.1.0"
+description = "A Jupyter notebook with access to objects from the Django ORM is a powerful tool to introspect data and run ad-hoc queries."
+readme = "README.md"
+authors = [
+  {name = "Daniel Roy Greenfeld", email = "daniel@feldroy.com"},
+  {name = "Anna Zhydko", email = "anna.zhydko@krakentechnologies.ltd"}
+]
+maintainers = [
+  {name = "Daniel Roy Greenfeld", email = "daniel@feldroy.com"},
+  {name = "Anna Zhydko", email = "anna.zhydko@krakentechnologies.ltd"}
+]
+classifiers = [
+
+]
+license = {text = "GNU General Public License v3"}
+dependencies = []
+
+[project.optional-dependencies]
+test = [
+    "black",  # code auto-formatting
+    "coverage",  # testing
+    "isort",  # code auto-formatting
+    "mypy",  # linting
+    "pytest",  # testing
+    "ruff"  # linting
+]
+
+[project.urls]
+
+bugs = "https://github.com/pydanny/dj_notebook/issues"
+changelog = "https://github.com/pydanny/dj_notebook/blob/master/CHANGELOG.md"
+homepage = "https://github.com/pydanny/dj_notebook"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+# Isort
+# -----
+
+[tool.isort]
+line_length = 99
+profile = "black"
+default_section = "THIRDPARTY"
+lines_after_imports = 2
+
+
+# Mypy
+# ----
+
+[tool.mypy]
+files = "."
+
+# Use strict defaults
+strict = true
+warn_unreachable = true
+warn_no_return = true
+
+[[tool.mypy.overrides]]
+# Don't require test functions to include types
+module = "tests.*"
+allow_untyped_defs = true
+disable_error_code = "attr-defined"
