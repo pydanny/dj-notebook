@@ -22,11 +22,16 @@ license = {text = "GNU General Public License v3"}
 dependencies = [
   "django",
   "django-extensions",
-  "ipython"
+  "ipython",
+  "python-dotenv"
 ]
 
 [project.optional-dependencies]
 test = [
+    "django",
+    "django-extensions",
+    "ipython",  
+    "python-dotenv",
     "black",  # code auto-formatting
     "coverage",  # testing
     "isort",  # code auto-formatting

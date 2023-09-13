@@ -20,21 +20,27 @@ import django
 from django.core.management.color import no_style
 from django_extensions.management import shells
 from IPython.display import display
+import dotenv
+
+dotenv.load_dotenv('.dj-notebook')
 
 # TODO provide sensible default for PROJECT_PATH
 # TODO save PROJECT_PATH and DJANGO_SETTINGS_MODULE
-PROJECT_PATH = input("/Users/drg/projects/dj_notebook/tests/django_test_project")
-if not PROJECT_PATH:
-    PROJECT_PATH = "/Users/drg/projects/dj_notebook/tests/django_test_project"
+# PROJECT_PATH = input("/Users/drg/projects/dj_notebook/tests/django_test_project")
+# if not PROJECT_PATH:
+#     PROJECT_PATH = "/Users/drg/projects/dj_notebook/tests/django_test_project"
+PROJECT_PATH = os.getenv('PROJECT_PATH')
 sys.path.insert(0, PROJECT_PATH)
 # for p in sys.path:
 #     print(p)
 
 # TODO provide sensible default for DJANGO_SETTINGS_MODULE
-DJANGO_SETTINGS_MODULE = input("book_store.settings")
-if not DJANGO_SETTINGS_MODULE:
-    DJANGO_SETTINGS_MODULE = "book_store.settings"
+# DJANGO_SETTINGS_MODULE = input("book_store.settings")
+# if not DJANGO_SETTINGS_MODULE:
+#     DJANGO_SETTINGS_MODULE = "book_store.settings"
 # print("DJANGO_SETTINGS_MODULE", DJANGO_SETTINGS_MODULE)
+
+DJANGO_SETTINGS_MODULE = os.getenv('DJANGO_SETTINGS_MODULE')
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", DJANGO_SETTINGS_MODULE)
 os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
