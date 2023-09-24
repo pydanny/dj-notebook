@@ -1,3 +1,0 @@
-# Use `pwd` to get the PROJECT_PATH
-PROJECT_PATH=/Users/daniel.roy.greenfeld/projects/dj-notebook/tests/django_test_project
-DJANGO_SETTINGS_MODULE=book_store.settings
