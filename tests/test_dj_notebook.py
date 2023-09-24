@@ -1,5 +1,5 @@
-from dj_notebook import main
+from dj_notebook import activate
 
 
 def test_thing():
-    assert main() == "Hello, world!"
+    assert activate() == "Hello, world!"
