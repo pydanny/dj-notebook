@@ -4,62 +4,56 @@ A Jupyter notebook with access to objects from the Django ORM is a powerful tool
 
 ## Features
 
-- TODO
+- Easy ipython notebooks with Django
+- Built-in integration with the imported objects from django-extensions
+- Inheritance diagrams on any object, including ORM models
 
 ## Installation
 
+Use your installation tool of choice, here we use venv and pip:
+
 ```bash
-python -m venv venv  # Create virtualenv
+python -m venv venv
 source venv/bin/activate
 pip install dj_notebook
 ```
 
-### Usage: How dj_notebook handles initial arguments
+## Usage
 
-TODO
+First, find your project's `manage.py` file and open it. Copy whatever is being set to `DJANGO_SETTINGS_MODULE` into your clipboard.
 
-## Development
+Create an ipython notebook in the same directory as `manage.py`. Then in the first cell enter:
 
-Install the package in editable mode with test dependencies:
+```python
+from dj_notebook import activate
 
-```bash
-pip install -e '.[test]'
+plus = activate("DJANGO_SETTINGS_MODULE_VALUE")
 ```
 
-### Code quality
+In future cells, you can now load and run Django objects, including the ORM. This three line snippet should give an idea of what you can now do:
 
-```bash 
-make lint
+```python
+from django.contrib.auth import get_user_model
+User = get_user_model()
+User.objects.all()
 ```
 
-### Testing
+## Usage Plus
 
-```bash
-make test
+But wait, it gets better!
+
+When you activated the Django environment, you instantiated a variable called 'plus'. The 'plus' variable  is an object that contains everything loaded from django-extensions' `shell_plus`. Here's a demonstration, try running this snippet:
+
+```python
+plus.User.objects.all()
 ```
 
-### Releasing on PyPI
+We also provide a utility for introspection of classes, which can be useful in sophisticated project architectures.
 
-1. Update the `version` in `pyproject.toml`. We use semantic versioning
-2. At the command line, run `make tag`
-3. Go to [tags page](https://github.com/pydanny/dj_notebook/tags), choose the most recent tag, and click `Draft a new release`
-
-
-### Building the project locally
-
-Go to the project root
-
-```bash
-pip install --upgrade build
-python -m build
+```python
+plus.diagram(plus.User)
 ```
 
-Test the project, forcing reinstall if necessary
+<img src="https://mermaid.ink/img/Y2xhc3NEaWFncmFtCiAgY2xhc3MgZGphbmdvX2NvbnRyaWJfYXV0aF9tb2RlbHNfVXNlclsiZGphbmdvLmNvbnRyaWIuYXV0aC5tb2RlbHM6OlVzZXIiXQogIGRqYW5nb19kYl9tb2RlbHNfdXRpbHNfQWx0ZXJzRGF0YSA8fC0tIGRqYW5nb19kYl9tb2RlbHNfYmFzZV9Nb2RlbAogIGNsYXNzIGRqYW5nb19kYl9tb2RlbHNfdXRpbHNfQWx0ZXJzRGF0YVsiZGphbmdvLmRiLm1vZGVscy51dGlsczo6QWx0ZXJzRGF0YSJdCiAgZGphbmdvX2NvbnRyaWJfYXV0aF9iYXNlX3VzZXJfQWJzdHJhY3RCYXNlVXNlciA8fC0tIGRqYW5nb19jb250cmliX2F1dGhfbW9kZWxzX0Fic3RyYWN0VXNlcgogIGRqYW5nb19jb250cmliX2F1dGhfbW9kZWxzX1Blcm1pc3Npb25zTWl4aW4gPHwtLSBkamFuZ29fY29udHJpYl9hdXRoX21vZGVsc19BYnN0cmFjdFVzZXIKICBjbGFzcyBkamFuZ29fY29udHJpYl9hdXRoX21vZGVsc19BYnN0cmFjdFVzZXJbImRqYW5nby5jb250cmliLmF1dGgubW9kZWxzOjpBYnN0cmFjdFVzZXIiXQogIGNsYXNzIGRqYW5nb19kYl9tb2RlbHNfYmFzZV9Nb2RlbFsiZGphbmdvLmRiLm1vZGVscy5iYXNlOjpNb2RlbCJdCiAgY2xhc3MgZGphbmdvX2NvbnRyaWJfYXV0aF9iYXNlX3VzZXJfQWJzdHJhY3RCYXNlVXNlclsiZGphbmdvLmNvbnRyaWIuYXV0aC5iYXNlX3VzZXI6OkFic3RyYWN0QmFzZVVzZXIiXQogIGRqYW5nb19kYl9tb2RlbHNfYmFzZV9Nb2RlbCA8fC0tIGRqYW5nb19jb250cmliX2F1dGhfYmFzZV91c2VyX0Fic3RyYWN0QmFzZVVzZXIKICBkamFuZ29fZGJfbW9kZWxzX2Jhc2VfTW9kZWwgPHwtLSBkamFuZ29fY29udHJpYl9hdXRoX21vZGVsc19QZXJtaXNzaW9uc01peGluCiAgZGphbmdvX2NvbnRyaWJfYXV0aF9tb2RlbHNfQWJzdHJhY3RVc2VyIDx8LS0gZGphbmdvX2NvbnRyaWJfYXV0aF9tb2RlbHNfVXNlcgogIGNsYXNzIGRqYW5nb19jb250cmliX2F1dGhfbW9kZWxzX1Blcm1pc3Npb25zTWl4aW5bImRqYW5nby5jb250cmliLmF1dGgubW9kZWxzOjpQZXJtaXNzaW9uc01peGluIl0="/>
 
-```bash
-pip install dist/*.whl --force-reinstall
-```
 
-# Credits
-
-This package was created with [Cookiecutter](https://github.com/cookiecutter/cookiecutter) and the [cookiecutter-pymodule](https://github.com/pydanny/cookiecutter-pymodule) project template.
