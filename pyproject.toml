@@ -74,9 +74,3 @@ warn_no_return = true
 module = "tests.*"
 allow_untyped_defs = true
 disable_error_code = "attr-defined"
-
-[tool.poetry]
-name = "dj_notebook"
-version = "0.1.0"
-description = "A Jupyter notebook extension to enable access to objects in django through the Django ORM."
-authors = ["Daniel Roy Greenfeld", "Anna Zhydko"]
