@@ -40,9 +40,9 @@ test = [
 
 [project.urls]
 
-bugs = "https://github.com/pydanny/dj_notebook/issues"
-changelog = "https://github.com/pydanny/dj_notebook/blob/master/CHANGELOG.md"
-homepage = "https://github.com/pydanny/dj_notebook"
+bugs = "https://github.com/pydanny/dj-notebook/issues"
+changelog = "https://github.com/pydanny/dj-notebook/blob/master/CHANGELOG.md"
+homepage = "https://github.com/pydanny/dj-notebook"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
