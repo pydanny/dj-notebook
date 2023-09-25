@@ -28,9 +28,6 @@ make lint
 make test
 ```
 
-
-
-
 ### Building the project locally
 
 Go to the project root
