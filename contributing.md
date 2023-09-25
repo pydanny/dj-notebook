@@ -8,7 +8,7 @@
 
 ## Development
 
-Install the package in editable mode with test dependencies with venv:
+Install the package in editable mode with test dependencies:
 
 ```bash
 pip install -e '.[test]'
