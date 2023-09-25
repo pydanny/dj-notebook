@@ -2,12 +2,23 @@
 
 TODO - improve and break into seperate files
 
+## Git workflow
+
+* Fork the repository
+* Issue s apull Request to Main
+
 ## Development
 
-Install the package in editable mode with test dependencies:
+Install the package in editable mode with test dependencies with venv:
 
 ```bash
+python -m venv venv
+source venv/bin/activate
 pip install -e '.[test]'
+```
+
+```bash
+poetry install
 ```
 
 ### Code quality
