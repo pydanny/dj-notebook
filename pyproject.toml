@@ -22,7 +22,8 @@ license = {text = "GNU General Public License v3"}
 dependencies = [
   "django",
   "django-extensions",
-  "ipython"
+  "ipython",
+  "jupyter",
 ]
 
 [project.optional-dependencies]
