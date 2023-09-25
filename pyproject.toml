@@ -16,7 +16,7 @@ maintainers = [
   {name = "Anna Zhydko", email = "anna.zhydko@krakentechnologies.ltd"}
 ]
 classifiers = [
-
+  "Programming Language :: Python :: 3.10",
 ]
 license = {text = "GNU General Public License v3"}
 dependencies = [
