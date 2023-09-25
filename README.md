@@ -22,7 +22,11 @@ pip install dj_notebook
 
 First, find your project's `manage.py` file and open it. Copy whatever is being set to `DJANGO_SETTINGS_MODULE` into your clipboard.
 
-Create an ipython notebook in the same directory as `manage.py`. Then in the first cell enter:
+Create an ipython notebook in the same directory as `manage.py`. In VSCode,
+simply add a new `.ipynb` file. If using Jupyter Lab, use the `File -> New ->
+Notebook` menu option.
+
+Then in the first cell enter:
 
 ```python
 from dj_notebook import activate
