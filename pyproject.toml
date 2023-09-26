@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dj_notebook"
-version = "0.2.0"
+version = "0.2.1"
 description = "A Jupyter notebook with access to objects from the Django ORM is a powerful tool to introspect data and run ad-hoc queries."
 readme = "README.md"
 authors = [
@@ -16,7 +16,7 @@ maintainers = [
   {name = "Anna Zhydko", email = "anna.zhydko@krakentechnologies.ltd"}
 ]
 classifiers = [
-  "Programming Language :: Python :: 3.09",
+  "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11"
 ]
