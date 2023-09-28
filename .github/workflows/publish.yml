@@ -1,0 +1,53 @@
+name: deploy
+
+on:
+  # Trigger the deploy on push to main branch
+  push:
+    branches:
+      - main
+      - add-jupyter-books-docs
+  schedule:
+    # jupyter-book is updated regularly, let's run this deployment every month in case something fails
+    # <minute [0,59]> <hour [0,23]> <day of the month [1,31]> <month of the year [1,12]> <day of the week [0,6]>
+    # https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07
+    # https://crontab.guru/every-month
+    # Run cron job every month
+    - cron: '0 0 1 * *'
+
+jobs: 
+  # This job deploys the example book
+  deploy-example-book:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python-version: [3.10]
+    steps:
+    - uses: actions/checkout@v2
+    # Install CC
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v1
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+    # Use default CC
+    - name: Cookiecutter no GHA
+      run: |
+        cookiecutter . --no-input include_ci=no
+    # Install requirements.txt
+    - name: Install requirements
+      run: |
+        pip install -r my_book/requirements.txt
+    # Build the example book
+    - name: Build book
+      run: |
+        jupyter-book build my_book/my_book/
+    # Deploy html to gh-pages
+    - name: GitHub Pages action
+      uses: peaceiris/actions-gh-pages@v3.6.1
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: my_book/my_book/_build/html
+        publish_branch: gh-pages
