@@ -15,6 +15,9 @@ python:
       path: .
       extra_requirements:
       - sphinx
+      - jupyter-book
+      - matplotlib
+      - numpy
 
 sphinx:
   builder: html
