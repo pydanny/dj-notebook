@@ -1,13 +1,11 @@
 from dj_notebook import activate
+from dj_notebook.shell_plus import DiagramClass
 
 
 def test_thing():
     plus = activate("test_harness")
     # TODO capture STDOUT and assert on it
     assert plus.print() is None
-
-
-from dj_notebook.shell_plus import DiagramClass
 
 
 def test_namify():
@@ -68,18 +66,23 @@ def test_draw_connections():
     diagram = DiagramClass(SampleClass)
 
     # Check if the graph has nodes for the SampleClass and its ancestors
-    assert (
-        f'  class {diagram.namify(SampleClass)}["{SampleClass.__module__}::{SampleClass.__name__}"]'
-        in diagram.graph
+    sample_class_node = (
+        f"  class {diagram.namify(SampleClass)}"
+        f'["{SampleClass.__module__}::{SampleClass.__name__}"]'
     )
-    assert (
-        f'  class {diagram.namify(TestClassA)}["{TestClassA.__module__}::{TestClassA.__name__}"]'
-        in diagram.graph
+    assert sample_class_node in diagram.graph
+
+    test_class_a_node = (
+        f"  class {diagram.namify(TestClassA)}"
+        f'["{TestClassA.__module__}::{TestClassA.__name__}"]'
     )
-    assert (
-        f'  class {diagram.namify(TestClassB)}["{TestClassB.__module__}::{TestClassB.__name__}"]'
-        in diagram.graph
+    assert test_class_a_node in diagram.graph
+
+    test_class_b_node = (
+        f"  class {diagram.namify(TestClassB)}"
+        f'["{TestClassB.__module__}::{TestClassB.__name__}"]'
     )
+    assert test_class_b_node in diagram.graph
 
     # Check if the graph has connections between the SampleClass and its ancestors
     assert (
