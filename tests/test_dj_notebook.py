@@ -1,5 +1,14 @@
-from dj_notebook import activate
+from unittest.mock import patch, Mock
+
+import pytest
+
+from dj_notebook import activate, Plus
 from dj_notebook.shell_plus import DiagramClass
+
+def test_thing():
+    plus = activate("test_harness")
+    # TODO capture STDOUT and assert on it
+    assert plus.print() is None
 
 
 def test_thing():
