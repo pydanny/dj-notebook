@@ -15,6 +15,10 @@ import base64
 
 import IPython
 from IPython.display import display
+import pandas as pd
+
+from django.db.models.query import QuerySet
+from django_pandas.io import read_frame
 
 
 class DiagramClass:
