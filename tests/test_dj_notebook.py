@@ -102,3 +102,15 @@ def test_draw_connections():
         f"  {diagram.namify(TestClassB)} <|-- {diagram.namify(SampleClass)}"
         in diagram.graph
     )
+
+def test_read_frame(mock_read_frame):
+    """
+    Tests the `read_frame` method of the `Plus` 
+    class to ensure it properly delegates to the
+    `django_pandas.io` wrapper around pandas, 
+    using a provided QuerySet. 
+
+    The test mocks this function to return "Mocked DataFrame"
+    and checks if the `Plus` method returns this when given a mock QuerySet.
+    """
+    
