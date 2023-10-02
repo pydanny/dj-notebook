@@ -100,3 +100,7 @@ class Plus:
         """Print all the objects contained by the Plus object."""
         for k, v in self.__dict__.items():
             print(k, v)  # noqa: K104
+
+    def read_frame(self, qs: QuerySet) -> pd.DataFrame:
+        """Converts a Django QuerySet into a Pandas DataFrame."""
+        return read_frame(qs)
