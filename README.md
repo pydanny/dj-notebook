@@ -66,4 +66,49 @@ Generates this image
 # Contributors
 
 <!-- readme: contributors -start -->
+<table>
+<tr>
+    <td align="center">
+        <a href="https://github.com/pydanny">
+            <img src="https://avatars.githubusercontent.com/u/62857?v=4" width="100;" alt="pydanny"/>
+            <br />
+            <sub><b>Daniel Roy Greenfeld</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/skyforest">
+            <img src="https://avatars.githubusercontent.com/u/13559970?v=4" width="100;" alt="skyforest"/>
+            <br />
+            <sub><b>Cody Antunez</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/anna-zhydko">
+            <img src="https://avatars.githubusercontent.com/u/68199135?v=4" width="100;" alt="anna-zhydko"/>
+            <br />
+            <sub><b>Anna Zhydko</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/bloodearnest">
+            <img src="https://avatars.githubusercontent.com/u/1042?v=4" width="100;" alt="bloodearnest"/>
+            <br />
+            <sub><b>Simon Davy</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/DaveParr">
+            <img src="https://avatars.githubusercontent.com/u/8363743?v=4" width="100;" alt="DaveParr"/>
+            <br />
+            <sub><b>Dave Parr</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/syyong">
+            <img src="https://avatars.githubusercontent.com/u/12908907?v=4" width="100;" alt="syyong"/>
+            <br />
+            <sub><b>Siew-Yit Yong</b></sub>
+        </a>
+    </td></tr>
+</table>
 <!-- readme: contributors -end -->
