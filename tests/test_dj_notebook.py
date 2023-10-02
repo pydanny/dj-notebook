@@ -49,4 +49,16 @@ def test_draw_connections():
     assertions... look on line 47 in the `draw_connections` definition 
     which it needs to match.
     """
-    
+    # Define base classes
+    class TestClassA:
+        pass
+
+    class TestClassB:
+        pass
+
+    # Create a sample class that inherits from the base classes
+    class SampleClass(TestClassA, TestClassB):
+        pass
+
+    diagram = DiagramClass(SampleClass)
+
