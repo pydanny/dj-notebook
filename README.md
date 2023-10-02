@@ -76,13 +76,6 @@ Generates this image
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/skyforest">
-            <img src="https://avatars.githubusercontent.com/u/13559970?v=4" width="100;" alt="skyforest"/>
-            <br />
-            <sub><b>Cody Antunez</b></sub>
-        </a>
-    </td>
-    <td align="center">
         <a href="https://github.com/anna-zhydko">
             <img src="https://avatars.githubusercontent.com/u/68199135?v=4" width="100;" alt="anna-zhydko"/>
             <br />
