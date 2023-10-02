@@ -125,4 +125,14 @@ def test_read_frame(mock_read_frame):
     The test mocks this function to return "Mocked DataFrame"
     and checks if the `Plus` method returns this when given a mock QuerySet.
     """
-    
+    plus_instance = Plus(helpers={})
+    mock_qs = MockQuerySet()
+
+    # Bypass __getattribute__ and directly set the read_frame method to the mock
+    plus_instance.read_frame = mock_read_frame
+
+    result = plus_instance.read_frame(mock_qs)
+
+    # assert mocked query called
+    mock_read_frame.assert_called_once_with(mock_qs)
+    assert result == "Mocked DataFrame"
