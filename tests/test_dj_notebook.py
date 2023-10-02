@@ -103,6 +103,18 @@ def test_draw_connections():
         in diagram.graph
     )
 
+# Create a mock for QuerySet.
+class MockQuerySet:
+    pass
+
+@pytest.fixture
+def mock_read_frame():
+    # Mock the external read_frame function from django_pandas.io
+    # since this proj uses a wrapper around it - test directly
+    with patch("django_pandas.io.read_frame") as mock_rf:
+        mock_rf.return_value = "Mocked DataFrame"
+        yield mock_rf
+
 def test_read_frame(mock_read_frame):
     """
     Tests the `read_frame` method of the `Plus` 
