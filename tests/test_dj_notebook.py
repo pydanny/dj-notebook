@@ -62,3 +62,11 @@ def test_draw_connections():
 
     diagram = DiagramClass(SampleClass)
 
+    # Check if the graph has nodes for the SampleClass and its ancestors
+    assert f'  class {diagram.namify(SampleClass)}["{SampleClass.__module__}::{SampleClass.__name__}"]' in diagram.graph
+    assert f'  class {diagram.namify(TestClassA)}["{TestClassA.__module__}::{TestClassA.__name__}"]' in diagram.graph
+    assert f'  class {diagram.namify(TestClassB)}["{TestClassB.__module__}::{TestClassB.__name__}"]' in diagram.graph
+
+    # Check if the graph has connections between the SampleClass and its ancestors
+    assert f'  {diagram.namify(TestClassA)} <|-- {diagram.namify(SampleClass)}' in diagram.graph
+    assert f'  {diagram.namify(TestClassB)} <|-- {diagram.namify(SampleClass)}' in diagram.graph
