@@ -1,14 +1,9 @@
-from unittest.mock import patch, Mock
+from unittest.mock import patch
 
 import pytest
 
 from dj_notebook import activate, Plus
 from dj_notebook.shell_plus import DiagramClass
-
-def test_thing():
-    plus = activate("test_harness")
-    # TODO capture STDOUT and assert on it
-    assert plus.print() is None
 
 
 def test_thing():
@@ -103,9 +98,11 @@ def test_draw_connections():
         in diagram.graph
     )
 
+
 # Create a mock for QuerySet.
 class MockQuerySet:
     pass
+
 
 @pytest.fixture
 def mock_read_frame():
@@ -115,12 +112,13 @@ def mock_read_frame():
         mock_rf.return_value = "Mocked DataFrame"
         yield mock_rf
 
+
 def test_read_frame(mock_read_frame):
     """
-    Tests the `read_frame` method of the `Plus` 
+    Tests the `read_frame` method of the `Plus`
     class to ensure it properly delegates to the
-    `django_pandas.io` wrapper around pandas, 
-    using a provided QuerySet. 
+    `django_pandas.io` wrapper around pandas,
+    using a provided QuerySet.
 
     The test mocks this function to return "Mocked DataFrame"
     and checks if the `Plus` method returns this when given a mock QuerySet.
