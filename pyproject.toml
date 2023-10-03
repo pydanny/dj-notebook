@@ -26,6 +26,8 @@ dependencies = [
   "django-extensions",
   "ipython",
   "jupyter",
+  "pandas",
+  "django-pandas"
 ]
 
 [project.optional-dependencies]
@@ -38,9 +40,7 @@ test = [
     "isort",  # code auto-formatting
     "mypy",  # linting
     "pytest",  # testing
-    "ruff",  # linting
-    "pandas", # pandas
-    "django-pandas" #django-pandas
+    "ruff"  # linting
 ]
 
 [project.urls]
