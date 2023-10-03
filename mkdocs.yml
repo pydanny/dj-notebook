@@ -1,0 +1,29 @@
+site_name: dj-notebook
+repo_url: https://github.com/pydanny/dj-notebook
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.instant.prefetch
+    - search.suggest
+    - search.highlight
+    - search.share
+  icon:
+    repo: fontawesome/brands/github
+
+
+
+plugins:
+    - mkdocs-jupyter:
+          remove_tag_config:
+              remove_input_tags:
+                  - hide_code
+    - search
+
+
+nav:
+  - Introduction: index.md
+  - Installation: installation.md
+  - Usage: usage.ipynb
+  - Contributing: contributing.md
+  - Releasing: releasing.md
