@@ -1,4 +1,8 @@
-from dj_notebook import activate
+from unittest.mock import patch
+
+import pytest
+
+from dj_notebook import activate, Plus
 from dj_notebook.shell_plus import DiagramClass
 
 
@@ -93,3 +97,40 @@ def test_draw_connections():
         f"  {diagram.namify(TestClassB)} <|-- {diagram.namify(SampleClass)}"
         in diagram.graph
     )
+
+
+# Create a mock for QuerySet.
+class MockQuerySet:
+    pass
+
+
+@pytest.fixture
+def mock_read_frame():
+    # Mock the external read_frame function from django_pandas.io
+    # since this proj uses a wrapper around it - test directly
+    with patch("django_pandas.io.read_frame") as mock_rf:
+        mock_rf.return_value = "Mocked DataFrame"
+        yield mock_rf
+
+
+def test_read_frame(mock_read_frame):
+    """
+    Tests the `read_frame` method of the `Plus`
+    class to ensure it properly delegates to the
+    `django_pandas.io` wrapper around pandas,
+    using a provided QuerySet.
+
+    The test mocks this function to return "Mocked DataFrame"
+    and checks if the `Plus` method returns this when given a mock QuerySet.
+    """
+    plus_instance = Plus(helpers={})
+    mock_qs = MockQuerySet()
+
+    # Bypass __getattribute__ and directly set the read_frame method to the mock
+    plus_instance.read_frame = mock_read_frame
+
+    result = plus_instance.read_frame(mock_qs)
+
+    # assert mocked query called
+    mock_read_frame.assert_called_once_with(mock_qs)
+    assert result == "Mocked DataFrame"

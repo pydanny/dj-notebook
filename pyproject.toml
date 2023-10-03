@@ -26,6 +26,8 @@ dependencies = [
   "django-extensions",
   "ipython",
   "jupyter",
+  "pandas",
+  "django-pandas"
 ]
 
 [project.optional-dependencies]
