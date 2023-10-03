@@ -38,7 +38,8 @@ test = [
     "isort",  # code auto-formatting
     "mypy",  # linting
     "pytest",  # testing
-    "ruff"  # linting
+    "ruff",  # linting
+    "pandas" # pandas
 ]
 
 [project.urls]
