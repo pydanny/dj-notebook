@@ -75,17 +75,17 @@ plus.read_frame(plus.User.objects.all())
 <table>
 <tr>
     <td align="center">
-        <a href="https://github.com/pydanny">
-            <img src="https://avatars.githubusercontent.com/u/62857?v=4" width="100;" alt="pydanny"/>
-            <br />
-            <sub><b>Daniel Roy Greenfeld</b></sub>
-        </a>
-    </td>
-    <td align="center">
         <a href="https://github.com/skyforest">
             <img src="https://avatars.githubusercontent.com/u/13559970?v=4" width="100;" alt="skyforest"/>
             <br />
             <sub><b>Cody Antunez</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/pydanny">
+            <img src="https://avatars.githubusercontent.com/u/62857?v=4" width="100;" alt="pydanny"/>
+            <br />
+            <sub><b>Daniel Roy Greenfeld</b></sub>
         </a>
     </td>
     <td align="center">
