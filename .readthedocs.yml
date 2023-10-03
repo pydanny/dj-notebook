@@ -19,7 +19,6 @@ python:
       - jupyter-book
       - matplotlib
       - numpy
-      - pandas
 
 sphinx:
   builder: html
