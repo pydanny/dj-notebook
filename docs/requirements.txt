@@ -1,2 +1,2 @@
 mkdocs-material
-mkdocs-pandas
+mkdocs-jupyter
