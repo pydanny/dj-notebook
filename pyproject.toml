@@ -42,6 +42,10 @@ test = [
     "pytest",  # testing
     "ruff"  # linting
 ]
+docs = [
+  "mkdocs-material",
+  "mkdocs-jupyter"
+]
 
 [project.urls]
 
