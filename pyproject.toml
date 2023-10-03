@@ -39,7 +39,8 @@ test = [
     "mypy",  # linting
     "pytest",  # testing
     "ruff",  # linting
-    "pandas" # pandas
+    "pandas", # pandas
+    "django-pandas" #django-pandas
 ]
 
 [project.urls]
