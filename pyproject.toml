@@ -54,6 +54,7 @@ docs = [
 bugs = "https://github.com/pydanny/dj-notebook/issues"
 changelog = "https://github.com/pydanny/dj-notebook/blob/master/CHANGELOG.md"
 homepage = "https://github.com/pydanny/dj-notebook"
+documentation = "https://dj-notebook.readthedocs.io/"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
