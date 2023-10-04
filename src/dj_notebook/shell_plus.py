@@ -29,6 +29,15 @@ from rich.syntax import Syntax
 console = Console()
 
 
+def display_mermaid(graph: str) -> None:
+    """Renders the display with Mermaid."""
+    graphbytes = graph.encode("ascii")
+    base64_bytes = base64.b64encode(graphbytes)
+    base64_string = base64_bytes.decode("ascii")
+    # Use Mermaid to render the graph and Ipthon to display it
+    display(IPython.display.Image(url="https://mermaid.ink/img/" + base64_string))
+
+
 class DiagramClass:
     """This class draws a class diagram for a given class and its ancestors."""
 
@@ -70,13 +79,7 @@ class DiagramClass:
         # Convert the set to a \n-seperated text file prefixed
         # with the classDiagram keyword from mermaidjs
         text = "classDiagram\n" + "\n".join(self.graph)
-
-        # Prepare the graph for display
-        graphbytes = text.encode("ascii")
-        base64_bytes = base64.b64encode(graphbytes)
-        base64_string = base64_bytes.decode("ascii")
-        # Use Mermaid to render the graph and Ipthon to display it
-        display(IPython.display.Image(url="https://mermaid.ink/img/" + base64_string))
+        display_mermaid(text)
 
 
 class Plus:
@@ -113,3 +116,7 @@ class Plus:
     def read_frame(self, qs: QuerySet) -> pd.DataFrame:
         """Converts a Django QuerySet into a Pandas DataFrame."""
         return read_frame(qs)
+
+    def mermaid(self, diagram: str) -> None:
+        """Render a mermaid diagram."""
+        display_mermaid(diagram)
