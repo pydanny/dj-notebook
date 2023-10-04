@@ -15,13 +15,10 @@ import base64
 
 import IPython
 from IPython.display import display
-from IPython.utils.capture import capture_output
 import pandas as pd
 
 from django.db.models.query import QuerySet
 from django_pandas.io import read_frame
-from django.core.management.color import no_style
-from django_extensions.management import shells
 
 from rich.console import Console
 from rich.syntax import Syntax
@@ -109,9 +106,7 @@ class Plus:
 
     def print(self) -> None:
         """Print all the objects contained by the Plus object."""
-        with capture_output() as c:
-            Plus(shells.import_objects({"quiet_load": False}, no_style()))
-        console.print(Syntax(c.stdout, "python"))
+        console.print(Syntax(self._import_object_history, "python"))
 
     def read_frame(self, qs: QuerySet) -> pd.DataFrame:
         """Converts a Django QuerySet into a Pandas DataFrame."""

@@ -7,7 +7,6 @@ from django_extensions.management import shells
 from IPython.utils.capture import capture_output
 
 from rich.console import Console
-from rich.syntax import Syntax
 from rich.status import Status
 
 
@@ -39,11 +38,11 @@ def activate(settings: str, quiet_load: bool = True) -> Plus:
             django.setup()
 
         with capture_output() as c:
-            plus = Plus(shells.import_objects({"quiet_load": quiet_load}, no_style()))
+            plus = Plus(shells.import_objects({"quiet_load": False}, no_style()))
 
-        # c()
-        # print(c.stdout)
+        plus._import_object_history = c.stdout
+
         if quiet_load is False:
-            console.print(Syntax(c.stdout, "python"))
+            plus.print()
 
     return plus
