@@ -1,9 +1,10 @@
 """
 This module is intended to be imported at the beginning of a jupyter notebook
 to enable access to django objects with everything from django-extensions'
-shell_plus command preloaded in the namespace:
+shell_plus command and other utilities.:
 
-    import dj_notebook as djnb
+    from dj_notebook import activate
+    plus = activate
 
 As it accesses the database, it requires that:
 - The database is running in the background
@@ -15,13 +16,10 @@ import base64
 
 import IPython
 from IPython.display import display
-from IPython.utils.capture import capture_output
 import pandas as pd
 
 from django.db.models.query import QuerySet
 from django_pandas.io import read_frame
-from django.core.management.color import no_style
-from django_extensions.management import shells
 
 from rich.console import Console
 from rich.syntax import Syntax
@@ -34,7 +32,6 @@ def display_mermaid(graph: str) -> None:
     graphbytes = graph.encode("ascii")
     base64_bytes = base64.b64encode(graphbytes)
     base64_string = base64_bytes.decode("ascii")
-    # Use Mermaid to render the graph and Ipthon to display it
     display(IPython.display.Image(url="https://mermaid.ink/img/" + base64_string))
 
 
@@ -55,8 +52,12 @@ class DiagramClass:
         # Draw connections between the base_class and its ancestors
         self.draw_connections(self.base_class)
 
+        # Convert the set to a \n-seperated text file prefixed
+        # with the classDiagram keyword from mermaidjs
+        text = "classDiagram\n" + "\n".join(self.graph)
+
         # Use Mermaid to render the graph and Ipthon to display it
-        self.display_graph()
+        display_mermaid(text)
 
     def draw_connections(self, class_: type) -> None:
         """Draw connections between a class and its ancestors,
@@ -74,12 +75,6 @@ class DiagramClass:
     def namify(self, class_: object) -> str:
         """This provides a node name that keeps Mermaid happy."""
         return f"{class_.__module__}_{class_.__name__}".replace(".", "_")
-
-    def display_graph(self) -> None:
-        # Convert the set to a \n-seperated text file prefixed
-        # with the classDiagram keyword from mermaidjs
-        text = "classDiagram\n" + "\n".join(self.graph)
-        display_mermaid(text)
 
 
 class Plus:
@@ -105,13 +100,9 @@ class Plus:
             class_ = type(class_)
         DiagramClass(class_)
 
-        # DiagramClass(class_)
-
     def print(self) -> None:
         """Print all the objects contained by the Plus object."""
-        with capture_output() as c:
-            Plus(shells.import_objects({"quiet_load": False}, no_style()))
-        console.print(Syntax(c.stdout, "python"))
+        console.print(Syntax(self._import_object_history, "python"))
 
     def read_frame(self, qs: QuerySet) -> pd.DataFrame:
         """Converts a Django QuerySet into a Pandas DataFrame."""
