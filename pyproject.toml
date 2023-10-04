@@ -24,10 +24,11 @@ license = {text = "GNU General Public License v3"}
 dependencies = [
   "django",
   "django-extensions",
+  "django-pandas",  
   "ipython",
   "jupyter",
   "pandas",
-  "django-pandas"
+  "rich"
 ]
 
 [project.optional-dependencies]
@@ -36,6 +37,7 @@ test = [
     "django-extensions",
     "ipython",  
     "black",  # code auto-formatting
+    "black[jupyter]",
     "coverage",  # testing
     "isort",  # code auto-formatting
     "mypy",  # linting
