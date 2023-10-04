@@ -1,9 +1,10 @@
 """
 This module is intended to be imported at the beginning of a jupyter notebook
 to enable access to django objects with everything from django-extensions'
-shell_plus command preloaded in the namespace:
+shell_plus command and other utilities.:
 
-    import dj_notebook as djnb
+    from dj_notebook import activate
+    plus = activate
 
 As it accesses the database, it requires that:
 - The database is running in the background
@@ -31,7 +32,6 @@ def display_mermaid(graph: str) -> None:
     graphbytes = graph.encode("ascii")
     base64_bytes = base64.b64encode(graphbytes)
     base64_string = base64_bytes.decode("ascii")
-    # Use Mermaid to render the graph and Ipthon to display it
     display(IPython.display.Image(url="https://mermaid.ink/img/" + base64_string))
 
 
@@ -52,8 +52,12 @@ class DiagramClass:
         # Draw connections between the base_class and its ancestors
         self.draw_connections(self.base_class)
 
+        # Convert the set to a \n-seperated text file prefixed
+        # with the classDiagram keyword from mermaidjs
+        text = "classDiagram\n" + "\n".join(self.graph)
+
         # Use Mermaid to render the graph and Ipthon to display it
-        self.display_graph()
+        display_mermaid(text)
 
     def draw_connections(self, class_: type) -> None:
         """Draw connections between a class and its ancestors,
@@ -71,12 +75,6 @@ class DiagramClass:
     def namify(self, class_: object) -> str:
         """This provides a node name that keeps Mermaid happy."""
         return f"{class_.__module__}_{class_.__name__}".replace(".", "_")
-
-    def display_graph(self) -> None:
-        # Convert the set to a \n-seperated text file prefixed
-        # with the classDiagram keyword from mermaidjs
-        text = "classDiagram\n" + "\n".join(self.graph)
-        display_mermaid(text)
 
 
 class Plus:
@@ -101,8 +99,6 @@ class Plus:
         if not isinstance(class_, type):
             class_ = type(class_)
         DiagramClass(class_)
-
-        # DiagramClass(class_)
 
     def print(self) -> None:
         """Print all the objects contained by the Plus object."""
