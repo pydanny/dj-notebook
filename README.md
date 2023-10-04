@@ -132,3 +132,17 @@ plus.read_frame(plus.User.objects.all())
     </td></tr>
 </table>
 <!-- readme: contributors -end -->
+
+## Pair programmers
+
+Being a co-author of a commit doesn't show up in the contributor list above, so the following is for anyone who has paired on a commit and deserves credit.
+
+<!-- readme: evieclutton -start -->
+<!-- readme: evieclutton -end -->
+
+## Special thanks to Tom Preston
+
+Tom Preston did seminal work on Python paths that later became the foundation of dj-notebook.
+
+<!-- readme: prestto -start -->
+<!-- readme: prestto -start -->
