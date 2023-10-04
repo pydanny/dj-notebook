@@ -124,13 +124,6 @@ plus.read_frame(plus.User.objects.all())
     </td></tr>
 <tr>
     <td align="center">
-        <a href="https://github.com/specbeck">
-            <img src="https://avatars.githubusercontent.com/u/98754084?v=4" width="100;" alt="specbeck"/>
-            <br />
-            <sub><b>Saransh Sood</b></sub>
-        </a>
-    </td>
-    <td align="center">
         <a href="https://github.com/syyong">
             <img src="https://avatars.githubusercontent.com/u/12908907?v=4" width="100;" alt="syyong"/>
             <br />
