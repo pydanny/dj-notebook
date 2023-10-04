@@ -138,6 +138,16 @@ plus.read_frame(plus.User.objects.all())
 Being a co-author of a commit doesn't show up in the contributor list above, so the following is for anyone who has paired on a commit and deserves credit.
 
 <!-- readme: evieclutton -start -->
+<table>
+<tr>
+    <td align="center">
+        <a href="https://github.com/evieclutton">
+            <img src="https://avatars.githubusercontent.com/u/44432176?v=4" width="100;" alt="evieclutton"/>
+            <br />
+            <sub><b>Null</b></sub>
+        </a>
+    </td></tr>
+</table>
 <!-- readme: evieclutton -end -->
 
 ## Special thanks to Tom Preston
