@@ -133,11 +133,14 @@ plus.read_frame(plus.User.objects.all())
 </table>
 <!-- readme: contributors -end -->
 
-## Pair programmers
+## Special thanks
 
-Being a co-author of a commit doesn't show up in the contributor list above, so the following is for anyone who has paired on a commit and deserves credit.
+[Tom Preston](github.com/prestto) did seminal work on Python paths that later became the foundation of dj-notebook.
 
-<!-- readme: evieclutton -start -->
+[Evie Clutton](github.com/evieclutton) was co-author of a pull request that doesn't show up in the contributor list above.
+
+
+<!-- readme: prestto,evieclutton -start -->
 <table>
 <tr>
     <td align="center">
@@ -148,11 +151,7 @@ Being a co-author of a commit doesn't show up in the contributor list above, so 
         </a>
     </td></tr>
 </table>
-<!-- readme: evieclutton -end -->
+<!-- readme: prestto,evieclutton -end -->
 
-## Special thanks to Tom Preston
 
-Tom Preston did seminal work on Python paths that later became the foundation of dj-notebook.
 
-<!-- readme: prestto -start -->
-<!-- readme: prestto -start -->
