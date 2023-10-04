@@ -8,6 +8,7 @@ A Jupyter notebook with access to objects from the Django ORM is a powerful tool
 - Built-in integration with the imported objects from django-extensions
 - Inheritance diagrams on any object, including ORM models
 - Converts any Django QuerySet to Pandas Dataframe
+- Handy function for displaying mermaid charts in 
 
 ## Installation
 
@@ -68,6 +69,10 @@ Generates this image
 ```python
 plus.read_frame(plus.User.objects.all())
 ```
+
+## Check out the official documentation for more things you can do!
+
+[dj-notebook official documentation](https://dj-notebook.readthedocs.io/)
 
 
 # Contributors
