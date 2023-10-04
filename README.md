@@ -144,6 +144,13 @@ plus.read_frame(plus.User.objects.all())
 <table>
 <tr>
     <td align="center">
+        <a href="https://github.com/prestto">
+            <img src="https://avatars.githubusercontent.com/u/13559801?v=4" width="100;" alt="prestto"/>
+            <br />
+            <sub><b>Tom Preston</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/evieclutton">
             <img src="https://avatars.githubusercontent.com/u/44432176?v=4" width="100;" alt="evieclutton"/>
             <br />
