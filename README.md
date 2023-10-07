@@ -167,6 +167,13 @@ These are people who aren't in our formal git history but should be.
             <br />
             <sub><b>Null</b></sub>
         </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/tim-schilling">
+            <img src="https://avatars.githubusercontent.com/u/1281215?v=4" width="100;" alt="tim-schilling"/>
+            <br />
+            <sub><b>Tim Schilling</b></sub>
+        </a>
     </td></tr>
 </table>
 <!-- readme: prestto,evieclutton,tim-schilling -end -->
