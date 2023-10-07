@@ -13,11 +13,13 @@ As it accesses the database, it requires that:
 
 
 import base64
+from django.utils.functional import cached_property
 
 import IPython
 from IPython.display import display
 import pandas as pd
 
+from django.db import models as django_models
 from django.db.models.query import QuerySet
 from django_pandas.io import read_frame
 
@@ -111,3 +113,58 @@ class Plus:
     def mermaid(self, diagram: str) -> None:
         """Render a mermaid diagram."""
         display_mermaid(diagram)
+
+    @cached_property
+    def graph_data(self) -> dict:
+        """Cached property for the graph data."""
+        return graph_model_data(self.helpers)
+
+    def graph_model(self, model: django_models.Model, max_nodes: int = 20) -> None:
+        """Draw a diagram of the specified model in the database."""
+        if len(self.graph_data[model]) > max_nodes:
+            console.print(
+                f"[red bold]Warning: Model {model} has more than {max_nodes} nodes. "
+                "The diagram may be too large to render."
+            )
+
+        output = """flowchart TD\n"""
+        for edge in self.graph_data[model]:
+            output += f"  {edge['from']} --- {edge['to']}\n"
+        display_mermaid(output)
+
+
+def make_edge(a: django_models.Model, b: django_models.Model) -> dict:
+    # if a == b:
+    #     raise ValueError("Cannot create an edge between the same model.")
+    nodes = sorted([a._meta.model_name, b._meta.model_name])
+    return {"from": nodes[0], "to": nodes[1], "str": f"{nodes[0]} --- {nodes[1]}"}
+
+
+def graph_model_data(helpers: dict):
+    """Edges allow us to build a graph of the models in the database."""
+    data = {}
+
+    # Do first loop to get relations in one direction
+    for model_name, model in helpers.items():
+        if getattr(model, "_meta", None) is None:
+            continue
+
+        relations = [
+            field
+            for field in model._meta.get_fields(include_hidden=True)
+            if isinstance(field, django_models.ForeignObjectRel)
+        ]
+
+        # Set defaults
+        data.setdefault(model, [])
+        for relation in relations:
+            # Set defaults
+            data.setdefault(relation.related_model, [])
+
+            # Add the edge            
+            data[model].append(make_edge(a=model, b=relation.related_model))
+            data[relation.related_model].append(
+                make_edge(a=model, b=relation.related_model)
+            )
+
+    return data
