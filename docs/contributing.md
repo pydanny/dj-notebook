@@ -14,9 +14,19 @@ Install the package in editable mode with test dependencies:
 pip install -e '.[test]'
 ```
 
+Code away!
+
+### Standards
+
+dj-notebook follows these standards:
+
+- Styleguide: [PEP-8](https://peps.python.org/pep-0008/)
+- Code of Conduct: [Contributor Covenant](https://www.contributor-covenant.org)
+- Boring Technology for Packaging: setuptools and build
+
 ### Code quality
 
-Lint to codebase with black and ruff for code formatting and linting:
+Linting and formatting is done with Black and Ruff:
 
 ```bash 
 make lint
@@ -43,6 +53,4 @@ Test the project, forcing reinstall if necessary
 pip install dist/*.whl --force-reinstall
 ```
 
-# Credits
 
-This package was created with [Cookiecutter](https://github.com/cookiecutter/cookiecutter) and the [simplicity](https://github.com/pydanny/simplicity) project template.
