@@ -2,6 +2,8 @@
 
 A Jupyter notebook with access to objects from the Django ORM is a powerful tool to introspect data and run ad-hoc queries. This works with modern Django and Python 3.9, 3.10, and 3.11.
 
+Full documentation is available at [dj-notebook](https://dj-notebook.readthedocs.io/)
+
 ## Features
 
 - Easy ipython notebooks with Django
@@ -144,7 +146,7 @@ plus.read_frame(plus.User.objects.all())
 
 [Tom Preston](github.com/prestto) did seminal work on Python paths that later became the foundation of dj-notebook.
 
-[Evie Clutton](github.com/evieclutton) was co-author of a pull request that doesn't show up in the contributor list above.
+[Evie Clutton](github.com/evieclutton) was co-author of a pull request and they don't show up in the contributor list above.
 
 
 <!-- readme: prestto,evieclutton -start -->
@@ -167,5 +169,6 @@ plus.read_frame(plus.User.objects.all())
 </table>
 <!-- readme: prestto,evieclutton -end -->
 
+## Construction
 
-
+This package was created with [Cookiecutter](https://github.com/cookiecutter/cookiecutter) and the [simplicity](https://github.com/pydanny/simplicity) project template.
