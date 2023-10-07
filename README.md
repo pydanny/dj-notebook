@@ -144,12 +144,14 @@ plus.read_frame(plus.User.objects.all())
 
 ## Special thanks
 
-[Tom Preston](github.com/prestto) did seminal work on Python paths that later became the foundation of dj-notebook.
+These are people who aren't in our formal git history but should be.
 
-[Evie Clutton](github.com/evieclutton) was co-author of a pull request and they don't show up in the contributor list above.
+- [Tom Preston](github.com/prestto) did seminal work on Python paths that later became the foundation of dj-notebook.
+- [Evie Clutton](github.com/evieclutton) was co-author of a pull request and they don't show up in the contributor  list above.
+- [Tim Schilling](github.com/tim-schilling) assisted with the `graph_model` method
 
 
-<!-- readme: prestto,evieclutton -start -->
+<!-- readme: prestto,evieclutton,tim-schilling -start -->
 <table>
 <tr>
     <td align="center">
@@ -167,7 +169,7 @@ plus.read_frame(plus.User.objects.all())
         </a>
     </td></tr>
 </table>
-<!-- readme: prestto,evieclutton -end -->
+<!-- readme: prestto,evieclutton,tim-schilling -end -->
 
 ## Construction
 
