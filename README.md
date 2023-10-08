@@ -104,6 +104,13 @@ plus.read_frame(plus.User.objects.all())
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/Tejoooo">
+            <img src="https://avatars.githubusercontent.com/u/112956566?v=4" width="100;" alt="Tejoooo"/>
+            <br />
+            <sub><b>Tejo Kaushal</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/bloodearnest">
             <img src="https://avatars.githubusercontent.com/u/1042?v=4" width="100;" alt="bloodearnest"/>
             <br />
@@ -116,15 +123,15 @@ plus.read_frame(plus.User.objects.all())
             <br />
             <sub><b>Null</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/DaveParr">
             <img src="https://avatars.githubusercontent.com/u/8363743?v=4" width="100;" alt="DaveParr"/>
             <br />
             <sub><b>Dave Parr</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/specbeck">
             <img src="https://avatars.githubusercontent.com/u/98754084?v=4" width="100;" alt="specbeck"/>
