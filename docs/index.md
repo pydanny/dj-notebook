@@ -1,6 +1,6 @@
 # Home
 
-![dj-notebook logo](https://dj-notebook.readthedocs.io/en/latest/assets/dj-notebook-logo.png)
+![dj-notebook logo](https://dj-notebook.readthedocs.io/en/latest/img/dj-notebook-logo.png)
 
 _Django + Jupyter notebooks made easy_
 
