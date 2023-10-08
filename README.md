@@ -1,8 +1,16 @@
-# dj-notebook
+<p align="center">
+  <a href="https://dj-notebook.readthedocs.io"><img src="https://dj-notebook.readthedocs.io/assets/dj-notebook-logo.png" alt="dj-notebook"></a>
+</p>
 
-A Jupyter notebook with access to objects from the Django ORM is a powerful tool to introspect data and run ad-hoc queries. This works with modern Django and Python 3.9, 3.10, and 3.11.
+Django + Jupyter notebooks made easy
 
-Full documentation is available at [dj-notebook](https://dj-notebook.readthedocs.io/)
+---
+
+A Jupyter notebook with access to objects from the Django ORM is a powerful tool to introspect data and run ad-hoc queries. 
+
+Full documentation available at [dj-notebook](https://dj-notebook.readthedocs.io/)
+
+---
 
 ## Features
 
