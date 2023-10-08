@@ -8,18 +8,9 @@ build:
     pre_build:
       # Generate the Sphinx configuration for this Jupyter Book so it builds.
       - "pip install -r docs/requirements.txt"
-      - "jupyter-book config sphinx docs/"
+      - "pip install ."
+      - "mkdocs build"
 
-python:
-  install:
-    - method: pip
-      path: .
-      extra_requirements:
-      - sphinx
-      - jupyter-book
-      - matplotlib
-      - numpy
-
-sphinx:
-  builder: html
-  fail_on_warning: true
+mkdocs:
+  configuration: mkdocs.yml
+  fail_on_warning: false

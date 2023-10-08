@@ -7,6 +7,4 @@ A Jupyter notebook with access to objects from the Django ORM is a powerful tool
 - Easy ipython notebooks with Django
 - Built-in integration with the imported objects from django-extensions
 - Inheritance diagrams on any object, including ORM models
-
-```{tableofcontents}
-```
+- Converts any Django QuerySet to Pandas Dataframe
