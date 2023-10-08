@@ -1,10 +1,35 @@
-# dj-notebook
+# Home
 
-A Jupyter notebook with access to objects from the Django ORM is a powerful tool to introspect data and run ad-hoc queries. This works with modern Django and Python 3.9, 3.10, and 3.11.
+![dj-notebook logo](/assets/dj-notebook-logo.png)
+
+_Django + Jupyter notebooks made easy_
+
+A Jupyter notebook with access to objects from the Django ORM is a powerful tool to introspect data and run ad-hoc queries.
 
 ## Features
+
+The ever-growing list of features:
 
 - Easy ipython notebooks with Django
 - Built-in integration with the imported objects from django-extensions
 - Inheritance diagrams on any object, including ORM models
 - Converts any Django QuerySet to Pandas Dataframe
+- Handy function for displaying mermaid charts in 
+- Generates visual maps of model relations
+
+## Examples
+
+```python
+from dj_notebook import activate
+plus = activate('book_store.settings')
+plus.User.objects.all()
+```
+
+```
+<QuerySet [<User: Audrey>, <User: Daniel>]>
+```
+
+
+## Full usage 
+
+Learn how to use all the awesome features in the [usagepage ](/usage).
