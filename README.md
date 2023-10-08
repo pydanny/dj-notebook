@@ -11,6 +11,7 @@ Full documentation is available at [dj-notebook](https://dj-notebook.readthedocs
 - Inheritance diagrams on any object, including ORM models
 - Converts any Django QuerySet to Pandas Dataframe
 - Handy function for displaying mermaid charts in 
+- Generates visual maps of model relations
 
 ## Installation
 
