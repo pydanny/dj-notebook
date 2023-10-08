@@ -8,7 +8,7 @@ theme:
     - search.suggest
     - search.highlight
     - search.share
-  logo: assets/dj-notebook-logo.png
+  logo: https://dj-notebook.readthedocs.io/en/latest/img/dj-notebook-logo.png
   icon:
     repo: fontawesome/brands/github
 
