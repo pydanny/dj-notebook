@@ -11,6 +11,7 @@ from dj_notebook.utilities.dj_notebook_utils import warn_if_shell_in_production
 from io import StringIO
 import sys
 
+
 def test_thing():
     plus = activate("test_harness")
     # TODO capture STDOUT and assert on it
@@ -141,23 +142,25 @@ def test_read_frame(mock_read_frame):
     assert result == "Mocked DataFrame"
 
 
-@pytest.mark.parametrize("debug_setting,command_name,should_warn", [
-    (True, 'shell_plus', True),
-    (True, 'shell', True),
-    (False, 'shell_plus', False),
-    (False, 'shell', False),
-    (False, 'runserver', False),
-    (True, 'runserver', False),
-])
-
+@pytest.mark.parametrize(
+    "debug_setting,command_name,should_warn",
+    [
+        (True, "shell_plus", True),
+        (True, "shell", True),
+        (False, "shell_plus", False),
+        (False, "shell", False),
+        (False, "runserver", False),
+        (True, "runserver", False),
+    ],
+)
 def test_warn_if_shell_in_production(debug_setting, command_name, should_warn):
     """
-    Tests `warn_if_shell_in_production()` to determine if the warning message 
-    should apppear based on combination of the settings.DEBUG and the command 
+    Tests `warn_if_shell_in_production()` to determine if the warning message
+    should apppear based on combination of the settings.DEBUG and the command
     being used.
 
-    We are looking for usage of either `shell_plus` or `shell` while 
-    DEBUG == True to trigger the warning message. 
+    We are looking for usage of either `shell_plus` or `shell` while
+    DEBUG == True to trigger the warning message.
     Else, no warning should appear.
     """
     # Set DEBUG value
