@@ -1,10 +1,15 @@
 from unittest.mock import patch
 
 import pytest
+from django.conf import settings
 
 from dj_notebook import activate, Plus
 from dj_notebook.shell_plus import DiagramClass
+from dj_notebook.utilities.dj_notebook_utils import warn_if_shell_in_production
 
+# Mocking sys.stderr for capturing print statements
+from io import StringIO
+import sys
 
 def test_thing():
     plus = activate("test_harness")
@@ -134,3 +139,39 @@ def test_read_frame(mock_read_frame):
     # assert mocked query called
     mock_read_frame.assert_called_once_with(mock_qs)
     assert result == "Mocked DataFrame"
+
+
+@pytest.mark.parametrize("debug_setting,command_name,should_warn", [
+    (True, 'shell_plus', True),
+    (True, 'shell', True),
+    (False, 'shell_plus', False),
+    (False, 'shell', False),
+    (False, 'runserver', False),
+    (True, 'runserver', False),
+])
+
+def test_warn_if_shell_in_production(debug_setting, command_name, should_warn):
+    """
+    Tests `warn_if_shell_in_production()` to determine if the warning message 
+    should apppear based on combination of the settings.DEBUG and the command 
+    being used.
+
+    We are looking for usage of either `shell_plus` or `shell` while 
+    DEBUG == True to trigger the warning message. 
+    Else, no warning should appear.
+    """
+    # Set DEBUG value
+    settings.DEBUG = debug_setting
+
+    # Redirect stderr to capture printed warnings
+    err = StringIO()
+    sys.stderr = err
+
+    if should_warn:
+        with pytest.warns(UserWarning, match=r"It is strongly discouraged to run"):
+            warn_if_shell_in_production(command_name)
+    else:
+        # Should not raise any warning
+        with pytest.warns(None) as record:
+            warn_if_shell_in_production(command_name)
+        assert len(record) == 0
