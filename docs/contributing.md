@@ -38,6 +38,11 @@ make lint
 make test
 ```
 
+---
+## Advanced
+
+Odds are you won't need these things.
+
 ### Building the project locally
 
 Go to the project root
