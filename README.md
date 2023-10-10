@@ -1,6 +1,16 @@
-# dj-notebook
+<p align="center">
+  <a href="https://dj-notebook.readthedocs.io"><img src="https://dj-notebook.readthedocs.io/en/latest/img/dj-notebook-logo.png" alt="dj-notebook"></a>
+</p>
 
-A Jupyter notebook with access to objects from the Django ORM is a powerful tool to introspect data and run ad-hoc queries. This works with modern Django and Python 3.9, 3.10, and 3.11.
+Django + Jupyter notebooks made easy
+
+---
+
+A Jupyter notebook with access to objects from the Django ORM is a powerful tool to introspect data and run ad-hoc queries. 
+
+Full documentation available at [dj-notebook](https://dj-notebook.readthedocs.io/)
+
+---
 
 ## Features
 
@@ -9,6 +19,7 @@ A Jupyter notebook with access to objects from the Django ORM is a powerful tool
 - Inheritance diagrams on any object, including ORM models
 - Converts any Django QuerySet to Pandas Dataframe
 - Handy function for displaying mermaid charts in 
+- Generates visual maps of model relations
 
 ## Installation
 
@@ -102,6 +113,13 @@ plus.read_frame(plus.User.objects.all())
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/Tejoooo">
+            <img src="https://avatars.githubusercontent.com/u/112956566?v=4" width="100;" alt="Tejoooo"/>
+            <br />
+            <sub><b>Tejo Kaushal</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/bloodearnest">
             <img src="https://avatars.githubusercontent.com/u/1042?v=4" width="100;" alt="bloodearnest"/>
             <br />
@@ -114,15 +132,15 @@ plus.read_frame(plus.User.objects.all())
             <br />
             <sub><b>Null</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/DaveParr">
             <img src="https://avatars.githubusercontent.com/u/8363743?v=4" width="100;" alt="DaveParr"/>
             <br />
             <sub><b>Dave Parr</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/specbeck">
             <img src="https://avatars.githubusercontent.com/u/98754084?v=4" width="100;" alt="specbeck"/>
@@ -142,12 +160,14 @@ plus.read_frame(plus.User.objects.all())
 
 ## Special thanks
 
-[Tom Preston](github.com/prestto) did seminal work on Python paths that later became the foundation of dj-notebook.
+These are people who aren't in our formal git history but should be.
 
-[Evie Clutton](github.com/evieclutton) was co-author of a pull request that doesn't show up in the contributor list above.
+- [Tom Preston](github.com/prestto) did seminal work on Python paths that later became the foundation of dj-notebook.
+- [Evie Clutton](github.com/evieclutton) was co-author of a pull request and they don't show up in the contributor  list above.
+- [Tim Schilling](github.com/tim-schilling) assisted with the `graph_model` method
 
 
-<!-- readme: prestto,evieclutton -start -->
+<!-- readme: prestto,evieclutton,tim-schilling -start -->
 <table>
 <tr>
     <td align="center">
@@ -163,9 +183,17 @@ plus.read_frame(plus.User.objects.all())
             <br />
             <sub><b>Null</b></sub>
         </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/tim-schilling">
+            <img src="https://avatars.githubusercontent.com/u/1281215?v=4" width="100;" alt="tim-schilling"/>
+            <br />
+            <sub><b>Tim Schilling</b></sub>
+        </a>
     </td></tr>
 </table>
-<!-- readme: prestto,evieclutton -end -->
+<!-- readme: prestto,evieclutton,tim-schilling -end -->
 
+## Construction
 
-
+This package was created with [Cookiecutter](https://github.com/cookiecutter/cookiecutter) and the [simplicity](https://github.com/pydanny/simplicity) project template.

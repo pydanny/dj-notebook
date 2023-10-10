@@ -7,17 +7,17 @@ from django_extensions.management import shells
 from IPython.utils.capture import capture_output
 from IPython.core.getipython import get_ipython
 
-from rich.console import Console
 from rich.status import Status
 
 
 from .shell_plus import Plus
 
-console = Console()
-
 
 def activate(settings: str, quiet_load: bool = True) -> Plus:
-    with Status("Loading dj-notebook...", spinner="bouncingBar"):
+    with Status(
+        "Loading dj-notebook...\n  Use Plus.print() to see what's been loaded.",
+        spinner="bouncingBar",
+    ):
         if settings == "test_harness":
             # Used for testing
             # NOTE: This is bad code smell, we'll improve on it
