@@ -19,14 +19,14 @@ def warn_if_shell_in_production(command_name):
     Args:
         command_name (str): Name of the command to check
     """
-    if (settings.DEBUG and command_name in ["shell", "shell_plus"]):
+    if settings.DEBUG and command_name in ["shell", "shell_plus"]:
         warning_message = (
             f"WARNING: It is strongly discouraged to run "
-            f"'{command_name}' while DEBUG set to True."
+            f"'{command_name}' 'shell_plus' in production."
         )
 
-        # Issue a warning using the warnings module
-        warnings.warn(warning_message)
+        # Display the warning in JupyterLab Notebook
+        warnings.warn(warning_message, stacklevel=2)
 
         # Print a red warning message to the shell
         print(colored(warning_message, "red"), file=sys.stderr)
