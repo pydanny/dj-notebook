@@ -145,7 +145,7 @@ class Plus:
         display_mermaid(output)
 
 
-def get_node_for_model(graph: schema.Graph, model: django_models.Model) -> schema.Node:
+def get_node_for_model(graph, model: django_models.Model):
     try:
         return next(
             filter(lambda x: x.id == schema.get_model_id(model), graph.nodes), None
@@ -154,9 +154,7 @@ def get_node_for_model(graph: schema.Graph, model: django_models.Model) -> schem
         raise Exception("Model not found in graph")
 
 
-def get_edges_for_model(
-    graph: schema.Graph, model: django_models.Model
-) -> list[schema.Edge]:
+def get_edges_for_model(graph, model: django_models.Model):
     node = get_node_for_model(graph, model)
     return list(
         filter(lambda x: x.source == node.id or x.target == node.id, graph.edges)
