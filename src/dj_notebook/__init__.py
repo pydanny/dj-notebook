@@ -64,7 +64,10 @@ def activate(settings: str, quiet_load: bool = True) -> Plus:
 
 def is_notebook():
     """Check if we're running inside a Jupyter notebook."""
-    ipython = get_ipython()
-    if ipython is None:
+    try:
+        ipython = get_ipython()
+        if ipython is None:
+            return False
+        return "IPKernelApp" in ipython.config
+    except Exception as e:
         return False
-    return "IPKernelApp" in ipython.config
