@@ -1,7 +1,9 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Book
-from django.http import Http404
 from django.db.models import Avg
+from django.http import Http404
+from django.shortcuts import get_object_or_404, render
+
+from .models import Book
+
 
 # Create your views here.
 

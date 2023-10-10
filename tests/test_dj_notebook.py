@@ -2,7 +2,7 @@ from unittest.mock import patch
 
 import pytest
 
-from dj_notebook import activate, Plus
+from dj_notebook import Plus, activate
 from dj_notebook.shell_plus import DiagramClass
 
 
