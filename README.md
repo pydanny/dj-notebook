@@ -191,6 +191,13 @@ These are people who aren't in our formal git history but should be.
             <br />
             <sub><b>Tim Schilling</b></sub>
         </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/meshy">
+            <img src="https://avatars.githubusercontent.com/u/767671?v=4" width="100;" alt="meshy"/>
+            <br />
+            <sub><b>Charlie Denton</b></sub>
+        </a>
     </td></tr>
 </table>
 <!-- readme: prestto,evieclutton,tim-schilling,meshy -end -->
