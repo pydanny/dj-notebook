@@ -1,0 +1,1 @@
+Please read the [Development - Contributing](https://dj-notebook.readthedocs.op/contributing/) guidelines in the documentation site.
