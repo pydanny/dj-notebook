@@ -64,6 +64,7 @@ def activate(settings: str, quiet_load: bool = True) -> Plus:
 
 def is_notebook():
     """Check if we're running inside a Jupyter notebook."""
+    # TODO: add logging
     try:
         ipython = get_ipython()
         if ipython is None:
