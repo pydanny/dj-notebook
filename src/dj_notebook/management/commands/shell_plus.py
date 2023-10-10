@@ -15,7 +15,6 @@ class Command(shell_plus.Command):
         """
         # Perform safety checks before running shell_plus
         warn_if_shell_in_production("shell_plus")
-        print("Custom shell_plus is being executed.")
 
         # Delegate to the original shell_plus command
         super().handle(*args, **options)
