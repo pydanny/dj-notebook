@@ -164,3 +164,4 @@ cython_debug/
 .ruff_cache/
 changelog.json
 .idea
+.DS_Store

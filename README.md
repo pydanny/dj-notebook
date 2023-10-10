@@ -162,12 +162,13 @@ plus.read_frame(plus.User.objects.all())
 
 These are people who aren't in our formal git history but should be.
 
-- [Tom Preston](github.com/prestto) did seminal work on Python paths that later became the foundation of dj-notebook.
-- [Evie Clutton](github.com/evieclutton) was co-author of a pull request and they don't show up in the contributor  list above.
-- [Tim Schilling](github.com/tim-schilling) assisted with the `graph_model` method
+- [Tom Preston](https://github.com/prestto) did seminal work on Python paths that later became the foundation of dj-notebook
+- [Evie Clutton](https://github.com/evieclutton) was co-author of a pull request and they don't show up in the contributor  list above
+- [Tim Schilling](https://github.com/tim-schilling) assisted with the `model_graph` method
+- [Charlie Denton](https://github.com/meshy) is responsible for django-schema-graph, which we leverage as part of the `model_graph` feature
 
 
-<!-- readme: prestto,evieclutton,tim-schilling -start -->
+<!-- readme: prestto,evieclutton,tim-schilling,meshy -start -->
 <table>
 <tr>
     <td align="center">
@@ -192,7 +193,7 @@ These are people who aren't in our formal git history but should be.
         </a>
     </td></tr>
 </table>
-<!-- readme: prestto,evieclutton,tim-schilling -end -->
+<!-- readme: prestto,evieclutton,tim-schilling,meshy -end -->
 
 ## Construction
 
