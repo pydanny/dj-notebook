@@ -38,8 +38,8 @@ def activate(settings: str, quiet_load: bool = True) -> Plus:
             os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
             django.setup()
 
-        # Check for Jupyter environment and display the warning if DEBUG=True
-        if is_notebook() and getattr(django_settings, "DEBUG", False):
+        # Check for Jupyter environment and display the warning if DEBUG=False
+        if is_notebook() and not getattr(django_settings, "DEBUG", True):
             from IPython.display import display, HTML
 
             warning_message = """
