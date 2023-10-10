@@ -24,7 +24,8 @@ license = {text = "GNU General Public License v3"}
 dependencies = [
   "django",
   "django-extensions",
-  "django-pandas",  
+  "django-pandas",
+  "django-schema-graph",
   "ipython",
   "jupyter",
   "pandas",

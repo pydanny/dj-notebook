@@ -24,7 +24,10 @@ from django.db.models.query import QuerySet
 from django_pandas.io import read_frame
 
 from rich.console import Console
+from rich.status import Status
 from rich.syntax import Syntax
+from schema_graph import schema
+
 
 console = Console()
 
@@ -115,56 +118,44 @@ class Plus:
         display_mermaid(diagram)
 
     @cached_property
-    def graph_data(self) -> dict:
+    def model_graph_schema(self) -> dict:
         """Cached property for the graph data."""
-        return graph_model_data(self.helpers)
+        with Status(
+            "Converting the models into a schema graph...",
+            spinner="bouncingBar",
+        ):
+            graph = schema.get_schema()
+        return graph
 
-    def graph_model(self, model: django_models.Model, max_nodes: int = 20) -> None:
+    def model_graph(self, model: django_models.Model, max_nodes: int = 20) -> None:
         """Draw a diagram of the specified model in the database."""
-        if len(self.graph_data[model]) > max_nodes:
+        edges = get_edges_for_model(self.model_graph_schema, model)
+
+        if len(edges) > max_nodes:
             console.print(
                 f"[red bold]Warning: Model {model} has more than {max_nodes} nodes. "
                 "The diagram may be too large to render."
             )
 
         output = """flowchart TD\n"""
-        for edge in self.graph_data[model]:
-            output += f"  {edge['from']} --- {edge['to']}\n"
+        for edge in edges:
+            output += (
+                f"  {edge.source.split('.')[-1]} --- {edge.target.split('.')[-1]}\n"
+            )
         display_mermaid(output)
 
 
-def make_edge(a: django_models.Model, b: django_models.Model) -> dict:
-    # if a == b:
-    #     raise ValueError("Cannot create an edge between the same model.")
-    nodes = sorted([a._meta.model_name, b._meta.model_name])
-    return {"from": nodes[0], "to": nodes[1], "str": f"{nodes[0]} --- {nodes[1]}"}
+def get_node_for_model(graph, model: django_models.Model):
+    try:
+        return next(
+            filter(lambda x: x.id == schema.get_model_id(model), graph.nodes), None
+        )
+    except StopIteration:
+        raise Exception("Model not found in graph")
 
 
-def graph_model_data(helpers: dict):
-    """Edges allow us to build a graph of the models in the database."""
-    data = {}
-
-    # Do first loop to get relations in one direction
-    for model_name, model in helpers.items():
-        if getattr(model, "_meta", None) is None:
-            continue
-
-        relations = [
-            field
-            for field in model._meta.get_fields(include_hidden=True)
-            if isinstance(field, django_models.ForeignObjectRel)
-        ]
-
-        # Set defaults
-        data.setdefault(model, [])
-        for relation in relations:
-            # Set defaults
-            data.setdefault(relation.related_model, [])
-
-            # Add the edge            
-            data[model].append(make_edge(a=model, b=relation.related_model))
-            data[relation.related_model].append(
-                make_edge(a=model, b=relation.related_model)
-            )
-
-    return data
+def get_edges_for_model(graph, model: django_models.Model):
+    node = get_node_for_model(graph, model)
+    return list(
+        filter(lambda x: x.source == node.id or x.target == node.id, graph.edges)
+    )
