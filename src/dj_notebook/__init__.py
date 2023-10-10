@@ -70,5 +70,5 @@ def is_notebook():
         if ipython is None:
             return False
         return "IPKernelApp" in ipython.config
-    except Exception as e:
+    except Exception:
         return False
