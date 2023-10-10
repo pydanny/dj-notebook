@@ -5,6 +5,7 @@ from django.conf import settings as django_settings
 from django_extensions.management import shells
 
 from IPython.utils.capture import capture_output
+from IPython.core.getipython import get_ipython
 
 from rich.console import Console
 from rich.status import Status
@@ -37,6 +38,19 @@ def activate(settings: str, quiet_load: bool = True) -> Plus:
             os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
             django.setup()
 
+        # Check for Jupyter environment and display the warning if DEBUG=True
+        if is_notebook() and getattr(django_settings, "DEBUG", False):
+            from IPython.display import display, HTML
+
+            warning_message = """
+            <div style='background-color: #fff3cd; border-left: 
+            6px solid #ffcc00; padding: 10px; margin: 10px 0;'>
+            WARNING: It is strongly discouraged to run shell 
+            or shell_plus in production.
+            </div>
+            """
+            display(HTML(warning_message))
+
         with capture_output() as c:
             plus = Plus(shells.import_objects({"quiet_load": False}, no_style()))
 
@@ -46,3 +60,11 @@ def activate(settings: str, quiet_load: bool = True) -> Plus:
             plus.print()
 
     return plus
+
+
+def is_notebook():
+    """Check if we're running inside a Jupyter notebook."""
+    ipython = get_ipython()
+    if ipython is None:
+        return False
+    return "IPKernelApp" in ipython.config
