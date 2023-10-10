@@ -3,9 +3,12 @@ from unittest.mock import patch
 import pytest
 from django.conf import settings
 
-from dj_notebook import activate, Plus
+from dj_notebook import activate, Plus, is_notebook
 from dj_notebook.shell_plus import DiagramClass
 from dj_notebook.utilities.dj_notebook_utils import warn_if_shell_in_production
+
+import pytest
+from unittest import mock
 
 # Mocking sys.stderr for capturing print statements
 from io import StringIO
@@ -178,3 +181,39 @@ def test_warn_if_shell_in_production(debug_setting, command_name, should_warn):
         with pytest.warns(None) as record:
             warn_if_shell_in_production(command_name)
         assert len(record) == 0
+
+# Mocking get_ipython to mimic Jupyter environment
+@pytest.fixture
+def mock_ipython():
+    with mock.patch('dj_notebook.get_ipython') as get_ipython:
+        ipython_mock = mock.Mock()
+        ipython_mock.config = {"IPKernelApp": True}
+        get_ipython.return_value = ipython_mock
+        yield
+
+# Test for is_notebook function
+def test_is_notebook_true(mock_ipython):
+    assert is_notebook() == True
+
+# Mocking get_ipython to mimic non-Jupyter environment
+@pytest.fixture
+def mock_no_ipython():
+    with mock.patch('dj_notebook.get_ipython', return_value=None):
+        yield
+
+def test_is_notebook_false(mock_no_ipython):
+    assert is_notebook() == False
+
+# Testing activate function - for simplicity, just checking the debug warning display
+@mock.patch('dj_notebook.django_settings.DEBUG', new_callable=mock.PropertyMock, return_value=True)
+@mock.patch('IPython.display.display')
+def test_activate_warning_displayed(display_mock, mock_settings, mock_ipython):
+    activate('some_settings')
+    display_mock.assert_called_once()
+
+@mock.patch('dj_notebook.is_notebook', return_value=False)  # Mocking is_notebook to always return False
+@mock.patch('dj_notebook.django_settings.DEBUG', new_callable=mock.PropertyMock, return_value=False)
+@mock.patch('IPython.display.display')
+def test_activate_no_warning(display_mock, mock_settings, mock_is_notebook):
+    activate('some_settings')
+    display_mock.assert_not_called()
