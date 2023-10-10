@@ -1,13 +1,11 @@
-import django
 import os
-from django.core.management.color import no_style
+
+import django
 from django.conf import settings as django_settings
+from django.core.management.color import no_style
 from django_extensions.management import shells
-
 from IPython.utils.capture import capture_output
-
 from rich.status import Status
-
 
 from .shell_plus import Plus
 

@@ -13,16 +13,14 @@ As it accesses the database, it requires that:
 
 
 import base64
-from django.utils.functional import cached_property
 
 import IPython
-from IPython.display import display
 import pandas as pd
-
 from django.db import models as django_models
 from django.db.models.query import QuerySet
+from django.utils.functional import cached_property
 from django_pandas.io import read_frame
-
+from IPython.display import display
 from rich.console import Console
 from rich.status import Status
 from rich.syntax import Syntax
