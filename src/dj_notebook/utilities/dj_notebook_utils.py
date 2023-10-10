@@ -19,7 +19,7 @@ def warn_if_shell_in_production(command_name):
     Args:
         command_name (str): Name of the command to check
     """
-    if settings.DEBUG and command_name in ["shell", "shell_plus"]:
+    if not settings.DEBUG and command_name in ["shell", "shell_plus"]:
         warning_message = (
             f"WARNING: It is strongly discouraged to run "
             f"'{command_name}' in production."
