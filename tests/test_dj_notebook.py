@@ -140,7 +140,9 @@ def test_warning_when_debug_false(capfd):
     """
     Test if the correct warning and message are displayed when DEBUG is False.
 
-    Checks for error string message in both stout and warnings.warn.
+    Checks for error string message in both stout and warnings.
+    Test assumes that calling activate("fake_settings") results in
+    a state where DEBUG is False.
 
     Args:
         capfd: Pytest fixture to capture stdout and stderr.
