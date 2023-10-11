@@ -45,7 +45,6 @@ def activate(settings: str, quiet_load: bool = True) -> Plus:
         # Log a warning message when DEBUG is set to False
         if not plus.settings.DEBUG:
             warnings.warn("Debug mode is turned off.")
-            rich_print("[red]WARNING: Debug mode is turned off.[/red]")
 
         if quiet_load is False:
             plus.print()
