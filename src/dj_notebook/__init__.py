@@ -1,4 +1,5 @@
 import os
+import warnings
 
 import django
 from django.conf import settings as django_settings
@@ -39,6 +40,10 @@ def activate(settings: str, quiet_load: bool = True) -> Plus:
             plus = Plus(shells.import_objects({"quiet_load": False}, no_style()))
 
         plus._import_object_history = c.stdout
+
+        # Log a warning message when DEBUG is set to False
+        if not plus.settings.DEBUG:
+            warnings.warn("Django is running in production mode with dj-notebook.")
 
         if quiet_load is False:
             plus.print()

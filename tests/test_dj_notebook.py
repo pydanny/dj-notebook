@@ -134,3 +134,27 @@ def test_read_frame(mock_read_frame):
     # assert mocked query called
     mock_read_frame.assert_called_once_with(mock_qs)
     assert result == "Mocked DataFrame"
+
+
+def test_warning_when_debug_false(capfd):
+    """
+    Test if the correct warning and message are displayed when DEBUG is False.
+
+    Checks for error string message in both stout and warnings.
+    Test assumes that calling activate("fake_settings") results in
+    a state where DEBUG is False.
+
+    Args:
+        capfd: Pytest fixture to capture stdout and stderr.
+    """
+
+    with pytest.warns(UserWarning) as record:
+        activate("fake_settings")
+
+    # Capture STDOUT and STDERR
+    capfd.readouterr()
+
+    # Check warning message
+    assert "Django is running in production mode with dj-notebook." in str(
+        record.list[0].message
+    )
