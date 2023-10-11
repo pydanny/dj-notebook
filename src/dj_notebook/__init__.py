@@ -1,10 +1,12 @@
 import os
+import warnings
 
 import django
 from django.conf import settings as django_settings
 from django.core.management.color import no_style
 from django_extensions.management import shells
 from IPython.utils.capture import capture_output
+from rich import print as rich_print
 from rich.status import Status
 
 from .shell_plus import Plus
@@ -39,6 +41,11 @@ def activate(settings: str, quiet_load: bool = True) -> Plus:
             plus = Plus(shells.import_objects({"quiet_load": False}, no_style()))
 
         plus._import_object_history = c.stdout
+
+        # Log a warning message when DEBUG is set to False
+        if not plus.settings.DEBUG:
+            warnings.warn("Debug mode is turned off.")
+            rich_print("[red]WARNING: Debug mode is turned off.[/red]")
 
         if quiet_load is False:
             plus.print()
