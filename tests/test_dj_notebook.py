@@ -1,11 +1,10 @@
 from unittest.mock import patch
 
 import pytest
-import warnings
 
 from dj_notebook import Plus, activate
 from dj_notebook.shell_plus import DiagramClass
-from django.conf import settings
+
 
 def test_thing():
     plus = activate("test_harness")
@@ -141,18 +140,18 @@ def test_warning_when_debug_false(capfd):
     """
     Test if the correct warning and message are displayed when DEBUG is False.
 
-    Checks for error string message in both stout and warnings.warn. 
+    Checks for error string message in both stout and warnings.warn.
 
     Args:
         capfd: Pytest fixture to capture stdout and stderr.
     """
-    
+
     with pytest.warns(UserWarning) as record:
-        activate("fake_settings")  
+        activate("fake_settings")
 
     # Capture STDOUT and STDERR
     captured = capfd.readouterr()
-    
+
     # Check stdout
     assert "Debug mode is turned off." in captured.out
     # Check warning message
