@@ -152,9 +152,9 @@ def test_warning_when_debug_false(capfd):
         activate("fake_settings")
 
     # Capture STDOUT and STDERR
-    captured = capfd.readouterr()
+    capfd.readouterr()
 
-    # Check stdout
-    assert "Debug mode is turned off." in captured.out
     # Check warning message
-    assert "Debug mode is turned off." in str(record.list[0].message)
+    assert "Django is running in production mode with dj-notebook." in str(
+        record.list[0].message
+    )
