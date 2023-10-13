@@ -40,7 +40,6 @@ test = [
     "black",  # code auto-formatting
     "black[jupyter]",
     "coverage",  # testing
-    "isort",  # code auto-formatting
     "mypy",  # linting
     "pytest",  # testing
     "ruff"  # linting
@@ -59,15 +58,6 @@ documentation = "https://dj-notebook.readthedocs.io/"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
-
-# Isort
-# -----
-
-[tool.isort]
-line_length = 99
-profile = "black"
-default_section = "THIRDPARTY"
-lines_after_imports = 2
 
 
 # Mypy
@@ -90,3 +80,36 @@ module = "tests.*"
 allow_untyped_defs = true
 disable_error_code = "attr-defined"
 
+# Ruff
+# ----
+
+[tool.ruff]
+select = [
+    "E",  # pycodestyle
+    "F",  # pyflakes
+    "I",  # isort
+]
+ignore = [
+    "E501",  # line too long - black takes care of this for us
+]
+
+[tool.ruff.per-file-ignores]
+# Allow unused imports in __init__ files as these are convenience imports
+"**/__init__.py" = [ "F401" ]
+
+[tool.ruff.isort]
+lines-after-imports = 2
+section-order = [
+    "future",
+    "standard-library",
+    "third-party",
+    "first-party",
+    "project",
+    "local-folder",
+]
+
+[tool.ruff.isort.sections]
+"project" = [
+    "src",
+    "tests",
+]
