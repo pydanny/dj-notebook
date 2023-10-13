@@ -166,9 +166,9 @@ These are people who aren't in our formal git history but should be.
 - [Evie Clutton](https://github.com/evieclutton) was co-author of a pull request and they don't show up in the contributor  list above
 - [Tim Schilling](https://github.com/tim-schilling) assisted with the `model_graph` method
 - [Charlie Denton](https://github.com/meshy) is responsible for django-schema-graph, which we leverage as part of the `model_graph` feature
+- [Christopher Clarke](https://github.com/chrisdev) built `django-pandas`, which dj-notebook uses
 
-
-<!-- readme: prestto,evieclutton,tim-schilling,meshy -start -->
+<!-- readme: prestto,evieclutton,tim-schilling,meshy,chrisdev -start -->
 <table>
 <tr>
     <td align="center">
@@ -198,9 +198,10 @@ These are people who aren't in our formal git history but should be.
             <br />
             <sub><b>Charlie Denton</b></sub>
         </a>
-    </td></tr>
+    </td>
+  </tr>
 </table>
-<!-- readme: prestto,evieclutton,tim-schilling,meshy -end -->
+<!-- readme: prestto,evieclutton,tim-schilling,meshy,chrisdev -end -->
 
 ## Construction
 
