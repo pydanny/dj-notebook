@@ -11,6 +11,9 @@ lint:
 	black .
 	ruff check . --fix
 
+mypy:
+	mypy .
+
 VERSION=v$(shell grep -m 1 version pyproject.toml | tr -s ' ' | tr -d '"' | tr -d "'" | cut -d' ' -f3)
 
 tag:

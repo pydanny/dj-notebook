@@ -13,6 +13,7 @@ As it accesses the database, it requires that:
 
 
 import base64
+import typing
 
 import IPython
 import pandas as pd
@@ -116,7 +117,7 @@ class Plus:
         display_mermaid(diagram)
 
     @cached_property
-    def model_graph_schema(self) -> dict:
+    def model_graph_schema(self) -> dict[typing.Any, typing.Any]:
         """Cached property for the graph data."""
         with Status(
             "Converting the models into a schema graph...",
