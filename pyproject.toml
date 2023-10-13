@@ -75,6 +75,9 @@ lines_after_imports = 2
 
 [tool.mypy]
 files = "."
+exclude = [
+  "tests/*"
+]
 
 # Use strict defaults
 strict = true
@@ -86,3 +89,4 @@ warn_no_return = true
 module = "tests.*"
 allow_untyped_defs = true
 disable_error_code = "attr-defined"
+
