@@ -130,7 +130,7 @@ plus.read_frame(plus.User.objects.all())
         <a href="https://github.com/akashverma0786">
             <img src="https://avatars.githubusercontent.com/u/138790903?v=4" width="100;" alt="akashverma0786"/>
             <br />
-            <sub><b>Akash Verma</b></sub>
+            <sub><b>Null</b></sub>
         </a>
     </td></tr>
 <tr>
@@ -182,7 +182,7 @@ These are people who aren't in our formal git history but should be.
         <a href="https://github.com/evieclutton">
             <img src="https://avatars.githubusercontent.com/u/44432176?v=4" width="100;" alt="evieclutton"/>
             <br />
-            <sub><b>Evie Clutton</b></sub>
+            <sub><b>Null</b></sub>
         </a>
     </td>
     <td align="center">
@@ -199,16 +199,9 @@ These are people who aren't in our formal git history but should be.
             <sub><b>Charlie Denton</b></sub>
         </a>
     </td>
-    <td align="center">
-        <a href="https://github.com/chrisdev">
-            <img src="https://avatars.githubusercontent.com/u/701689?v=4" width="100;" alt="meshy"/>
-            <br />
-            <sub><b>Christopher Clarke</b></sub>
-        </a>
-    </td>
   </tr>
 </table>
-<!-- readme: prestto,evieclutton,tim-schilling,meshy -end -->
+<!-- readme: prestto,evieclutton,tim-schilling,meshy,chrisdev -end -->
 
 ## Construction
 
