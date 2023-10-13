@@ -106,6 +106,13 @@ plus.read_frame(plus.User.objects.all())
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/specbeck">
+            <img src="https://avatars.githubusercontent.com/u/98754084?v=4" width="100;" alt="specbeck"/>
+            <br />
+            <sub><b>Saransh Sood</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/anna-zhydko">
             <img src="https://avatars.githubusercontent.com/u/68199135?v=4" width="100;" alt="anna-zhydko"/>
             <br />
@@ -125,27 +132,20 @@ plus.read_frame(plus.User.objects.all())
             <br />
             <sub><b>Simon Davy</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/akashverma0786">
             <img src="https://avatars.githubusercontent.com/u/138790903?v=4" width="100;" alt="akashverma0786"/>
             <br />
             <sub><b>Null</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/DaveParr">
             <img src="https://avatars.githubusercontent.com/u/8363743?v=4" width="100;" alt="DaveParr"/>
             <br />
             <sub><b>Dave Parr</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/specbeck">
-            <img src="https://avatars.githubusercontent.com/u/98754084?v=4" width="100;" alt="specbeck"/>
-            <br />
-            <sub><b>Saransh Sood</b></sub>
         </a>
     </td>
     <td align="center">
@@ -199,7 +199,13 @@ These are people who aren't in our formal git history but should be.
             <sub><b>Charlie Denton</b></sub>
         </a>
     </td>
-  </tr>
+    <td align="center">
+        <a href="https://github.com/chrisdev">
+            <img src="https://avatars.githubusercontent.com/u/701689?v=4" width="100;" alt="chrisdev"/>
+            <br />
+            <sub><b>Christopher  Clarke</b></sub>
+        </a>
+    </td></tr>
 </table>
 <!-- readme: prestto,evieclutton,tim-schilling,meshy,chrisdev -end -->
 
