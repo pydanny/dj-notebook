@@ -149,6 +149,13 @@ plus.read_frame(plus.User.objects.all())
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/geoffbeier">
+            <img src="https://avatars.githubusercontent.com/u/133355?v=4" width="100;" alt="geoffbeier"/>
+            <br />
+            <sub><b>Geoff Beier</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/syyong">
             <img src="https://avatars.githubusercontent.com/u/12908907?v=4" width="100;" alt="syyong"/>
             <br />
