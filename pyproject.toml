@@ -16,9 +16,17 @@ maintainers = [
   {name = "Anna Zhydko", email = "anna.zhydko@krakentechnologies.ltd"}
 ]
 classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Framework :: Django :: 4",
+  "Framework :: Django :: 4.1",
+  "Framework :: Django :: 4.2",
+  "Framework :: Django :: 5",
+  "Framework :: Jupyter",
+  "License :: OSI Approved :: GNU General Public License (GPL)",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
-  "Programming Language :: Python :: 3.11"
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12"
 ]
 license = {text = "GNU General Public License v3"}
 dependencies = [
