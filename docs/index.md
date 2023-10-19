@@ -32,4 +32,4 @@ plus.User.objects.all()
 
 ## Full usage 
 
-Learn how to use all the awesome features in the [usagepage ](/usage).
+Learn how to use all the awesome features in the [usage page](/usage).

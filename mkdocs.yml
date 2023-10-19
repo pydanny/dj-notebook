@@ -12,7 +12,10 @@ theme:
   icon:
     repo: fontawesome/brands/github
 
-
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
 
 plugins:
     - mkdocs-jupyter:
@@ -24,7 +27,9 @@ plugins:
 
 nav:
   - Introduction: index.md
-  - Installation: installation.md
+  - Installation:
+    - Installation: installation.md
+    - Using with PyCharm: pycharm.md
   - Usage: usage.ipynb
   - Contributing: contributing.md
   - Releasing: releasing.md
