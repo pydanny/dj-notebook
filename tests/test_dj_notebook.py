@@ -1,14 +1,40 @@
+from os import environ
 from unittest.mock import patch
 
+import django.conf
 import pytest
 from dj_notebook import Plus, activate
 from dj_notebook.shell_plus import DiagramClass
+from django import conf as django_conf
+
+
+class SettingsCleaner:
+    """
+    A context manager that saves and restores the value of `DJANGO_SETTINGS_MODULE` along with resetting
+    `djang.conf.settings` on both enter and exit, to prevent tests that rely on different django settings
+    from accidentally depending on each other.
+    """
+
+    def __enter__(self):
+        self.old_settings_env = environ.get("DJANGO_SETTINGS_MODULE", None)
+        if self.old_settings_env is not None:
+            del environ["DJANGO_SETTINGS_MODULE"]
+        django_conf.settings = django.conf.LazySettings()
+        return None
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        if self.old_settings_env is not None:
+            environ["DJANGO_SETTINGS_MODULE"] = self.old_settings_env
+        else:
+            del environ["DJANGO_SETTINGS_MODULE"]
+        django.conf.settings = django.conf.LazySettings()
 
 
 def test_thing():
-    plus = activate("test_harness")
-    # TODO capture STDOUT and assert on it
-    assert plus.print() is None
+    with SettingsCleaner():
+        plus = activate("tests.config_test_harness")
+        # TODO capture STDOUT and assert on it
+        assert plus.print() is None
 
 
 def test_namify():
@@ -147,13 +173,14 @@ def test_warning_when_debug_false(capfd):
         capfd: Pytest fixture to capture stdout and stderr.
     """
 
-    with pytest.warns(UserWarning) as record:
-        activate("fake_settings")
+    with SettingsCleaner():
+        with pytest.warns(UserWarning) as record:
+            activate("tests.config_debug_false")
 
-    # Capture STDOUT and STDERR
-    capfd.readouterr()
+        # Capture STDOUT and STDERR
+        capfd.readouterr()
 
-    # Check warning message
-    assert "Django is running in production mode with dj-notebook." in str(
-        record.list[0].message
-    )
+        # Check warning message
+        assert "Django is running in production mode with dj-notebook." in [
+            str(r.message) for r in record.list
+        ]
