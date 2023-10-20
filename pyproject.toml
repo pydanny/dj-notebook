@@ -37,7 +37,8 @@ dependencies = [
   "ipython",
   "jupyter",
   "pandas",
-  "rich"
+  "rich",
+  "python-dotenv"
 ]
 
 [project.optional-dependencies]
