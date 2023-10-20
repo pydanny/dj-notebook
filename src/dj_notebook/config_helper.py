@@ -5,6 +5,11 @@ from typing import Generator, Tuple
 
 from dotenv import load_dotenv
 
+# taken from dotenv, which declares a similar type (but it doesn't look public...)
+# review note: the | syntax is new in python 3.10. If older pythons are generally being supported here, this should be
+# rewritten as Union[str, os.PathLike[str]]
+StrPath = str | os.PathLike[str]
+
 
 def setdefault_calls(module_path: Path) -> Generator[ast.Call, None, None]:
     """ Yields all calls to `os.environ.setdefault` within a module. """
@@ -33,21 +38,27 @@ def is_root(path: Path) -> bool:
     return path.samefile(path.parent)
 
 
-def find_django_settings_module() -> Tuple[str | None, str | None]:
+# review note: the | syntax is new in python 3.10. If older pythons are generally being supported here, the type for
+# dotenv_file should be rewritten as Optional[StrPath] = None and the return type should be annotated as
+# Tuple[str, Optional[str]]
+def find_django_settings_module(*, dotenv_file: StrPath | None = None) -> Tuple[str, str | None]:
     """
+    Find the name of the first settings module from the environment or the closest `manage.py` file.
+    Returns: a tuple(source, module name) telling the caller where the module was found and the name of the module.
 
-    Returns:
-        A sane default value from the environment or from a `manage.py` script for the django project's settings module,
-        or None if one can't be inferred
-
+    The optional, keyword-only argument `dotenv_file` will be explicitly loaded prior to searching the environment,
+    if supplied.
     """
     # First see if this has either already been set in the environment or put in a .env file that python-dotenv will
     # treat that way
-    source = "environment"
-    settings_module = os.environ.get("DJANGO_SETTINGS_MODULE", None)
+    settings_module = None
+    if not dotenv_file:
+        source = "environment"
+        settings_module = os.environ.get("DJANGO_SETTINGS_MODULE", None)
     if not settings_module:
+        # load with override=True if the caller has specified a dotenv file explicitly
         source = "dotenv"
-        load_dotenv()
+        load_dotenv(dotenv_file, override=bool(dotenv_file))
     settings_module = os.environ.get("DJANGO_SETTINGS_MODULE", None)
     # If we get nothing from the environment, look for a `manage.py` script containing a call that sets a default in the
     # current working directory or in any parent. This should accommodate the common pattern of
@@ -90,4 +101,3 @@ def find_django_settings_module() -> Tuple[str | None, str | None]:
                         break
 
     return str(source), settings_module
-
