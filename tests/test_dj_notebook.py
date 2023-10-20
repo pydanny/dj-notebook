@@ -25,7 +25,7 @@ class SettingsCleaner:
     def __exit__(self, exc_type, exc_val, exc_tb):
         if self.old_settings_env is not None:
             environ["DJANGO_SETTINGS_MODULE"] = self.old_settings_env
-        else:
+        elif "DJANGO_SETTINGS_MODULE" in environ:
             del environ["DJANGO_SETTINGS_MODULE"]
         django.conf.settings = django.conf.LazySettings()
 
