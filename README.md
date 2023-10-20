@@ -120,20 +120,27 @@ plus.read_frame(plus.User.objects.all())
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/geoffbeier">
+            <img src="https://avatars.githubusercontent.com/u/133355?v=4" width="100;" alt="geoffbeier"/>
+            <br />
+            <sub><b>Geoff Beier</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/Tejoooo">
             <img src="https://avatars.githubusercontent.com/u/112956566?v=4" width="100;" alt="Tejoooo"/>
             <br />
             <sub><b>Tejo Kaushal</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/bloodearnest">
             <img src="https://avatars.githubusercontent.com/u/1042?v=4" width="100;" alt="bloodearnest"/>
             <br />
             <sub><b>Simon Davy</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/akashverma0786">
             <img src="https://avatars.githubusercontent.com/u/138790903?v=4" width="100;" alt="akashverma0786"/>
@@ -146,13 +153,6 @@ plus.read_frame(plus.User.objects.all())
             <img src="https://avatars.githubusercontent.com/u/8363743?v=4" width="100;" alt="DaveParr"/>
             <br />
             <sub><b>Dave Parr</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/geoffbeier">
-            <img src="https://avatars.githubusercontent.com/u/133355?v=4" width="100;" alt="geoffbeier"/>
-            <br />
-            <sub><b>Geoff Beier</b></sub>
         </a>
     </td>
     <td align="center">
