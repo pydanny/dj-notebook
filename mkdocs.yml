@@ -23,6 +23,7 @@ plugins:
               remove_input_tags:
                   - hide_code
     - search
+    - social    
 
 
 nav:
