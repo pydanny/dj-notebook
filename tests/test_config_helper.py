@@ -1,4 +1,3 @@
-
 import os
 from pathlib import Path
 
@@ -44,6 +43,22 @@ def test_setdefault_calls_import_alias():
     assert len(calls) == 1
     assert calls[0].args[0].value == "DJANGO_SETTINGS_MODULE"
     assert calls[0].args[1].value == "baz.settings"
+
+
+def test_setdefault_calls_skips_wrong_function():
+    script_dir_path = Path(os.path.dirname(os.path.realpath(__file__)))
+    manage_py = script_dir_path / "fake_other_environ_setdefault.py"
+    calls = list(setdefault_calls(manage_py))
+    assert len(calls) == 0
+
+
+def test_setdefault_calls_skips_wrong_function_finds_right_function():
+    script_dir_path = Path(os.path.dirname(os.path.realpath(__file__)))
+    manage_py = script_dir_path / "fake_other_environ_and_real_environ_setdefault.py"
+    calls = list(setdefault_calls(manage_py))
+    assert len(calls) == 1
+    assert calls[0].args[0].value == "DJANGO_SETTINGS_MODULE"
+    assert calls[0].args[1].value == "foo.bar.os.environ.settings"
 
 
 def test_find_django_settings_module_dotenv():

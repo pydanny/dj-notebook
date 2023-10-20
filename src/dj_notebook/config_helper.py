@@ -16,13 +16,15 @@ def setdefault_calls(module_path: Path) -> Generator[ast.Call, None, None]:
     """Yields all calls to `os.environ.setdefault` within a module."""
     with open(module_path, "r") as module_src:
         parsed_module = ast.parse(module_src.read())
-    environ_id = "environ"
+    environ_id = None
     for node in ast.walk(parsed_module):
         if isinstance(node, ast.ImportFrom) and node.module == "os":
             for name in node.names:
                 if isinstance(name, ast.alias):
-                    if name.name == "environ" and name.asname is not None:
-                        environ_id = name.asname
+                    if name.name == "environ":
+                        environ_id = (
+                            name.asname if name.asname is not None else name.name
+                        )
         if (
             isinstance(node, ast.Call)
             and isinstance(node.func, ast.Attribute)
