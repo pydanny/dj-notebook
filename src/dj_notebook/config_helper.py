@@ -54,7 +54,7 @@ def find_django_settings_module() -> Tuple[str | None, str | None]:
     # --> analysis_notebook.ipynb
     # - manage.py
     search_dir = Path.cwd().resolve()
-    while settings_module is not None:
+    while settings_module is None:
         manage_py = search_dir / "manage.py"
         if manage_py.is_file():
             for call in setdefault_calls(manage_py):
