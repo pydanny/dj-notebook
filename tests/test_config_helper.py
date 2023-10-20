@@ -46,19 +46,21 @@ def test_setdefault_calls_import_alias():
 
 
 def test_find_django_settings_module_dotenv():
-    env_file = "env.django_settings_module"
+    script_dir_path = Path(os.path.dirname(os.path.realpath(__file__)))
+    env_file = script_dir_path / "env.django_settings_module"
     with EnvironmentGuard():
-        source, found = find_django_settings_module(dotenv_file=Path(env_file))
+        source, found = find_django_settings_module(dotenv_file=env_file)
         assert source == "dotenv"
         assert os.environ["DJANGO_SETTINGS_MODULE"] == found
         assert found == "bip.config"
 
 
 def test_find_django_settings_module_dotenv_overrides():
-    env_file = "env.django_settings_module"
+    script_dir_path = Path(os.path.dirname(os.path.realpath(__file__)))
+    env_file = script_dir_path / "env.django_settings_module"
     with EnvironmentGuard():
         os.environ["DJANGO_SETTINGS_MODULE"] = "something.else"
-        source, found = find_django_settings_module(dotenv_file=Path(env_file))
+        source, found = find_django_settings_module(dotenv_file=env_file)
         assert source == "dotenv"
         assert os.environ["DJANGO_SETTINGS_MODULE"] == found
         assert found == "bip.config"
