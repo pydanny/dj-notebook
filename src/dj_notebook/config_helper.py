@@ -7,11 +7,22 @@ from dotenv import load_dotenv
 
 
 def setdefault_calls(module_path: Path) -> Generator[ast.Call, None, None]:
+    """ Yields all calls to `os.environ.setdefault` within a module. """
     with open(module_path, "r") as module_src:
         parsed_module = ast.parse(module_src.read())
+    environ_id = "environ"
     for node in ast.walk(parsed_module):
+        if isinstance(node, ast.ImportFrom) and node.module == "os":
+            for name in node.names:
+                if isinstance(name, ast.alias):
+                    if name.name == "environ" and name.asname is not None:
+                        environ_id = name.asname
         if isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute) and node.func.attr == "setdefault":
-            yield node
+            if isinstance(node.func.value, ast.Attribute) and node.func.value.attr == "environ":
+                if isinstance(node.func.value.value, ast.Name) and node.func.value.value.id == "os":
+                    yield node
+            elif isinstance(node.func.value, ast.Name) and node.func.value.id == environ_id:
+                yield node
 
 
 def is_root(path: Path) -> bool:
