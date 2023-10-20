@@ -20,11 +20,8 @@ def setdefault_calls(module_path: Path) -> Generator[ast.Call, None, None]:
     for node in ast.walk(parsed_module):
         if isinstance(node, ast.ImportFrom) and node.module == "os":
             for name in node.names:
-                if isinstance(name, ast.alias):
-                    if name.name == "environ":
-                        environ_id = (
-                            name.asname if name.asname is not None else name.name
-                        )
+                if isinstance(name, ast.alias) and name.name == "environ":
+                    environ_id = name.asname if name.asname is not None else name.name
         if (
             isinstance(node, ast.Call)
             and isinstance(node.func, ast.Attribute)
