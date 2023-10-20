@@ -27,13 +27,8 @@ def setdefault_calls(module_path: Path) -> Generator[ast.Call, None, None]:
 
 def is_root(path: Path) -> bool:
     """
-
-    Args:
-        path: directory to test
-
-    Returns:
-        True if the path is the same as the parent directory and therefore the root of the directory tree being searched
-
+    returns True if the supplied path is the root directory. This is only here because it seems clearer than
+    `path.samefile(path.parent)` when reading a loop that walks up a directory hierarchy.
     """
     return path.samefile(path.parent)
 
