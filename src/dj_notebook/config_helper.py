@@ -5,6 +5,7 @@ from typing import Generator, Tuple
 
 from dotenv import load_dotenv
 
+
 # taken from dotenv, which declares a similar type (but it doesn't look public...)
 # review note: the | syntax is new in python 3.10. If older pythons are generally being supported here, this should be
 # rewritten as Union[str, os.PathLike[str]]
@@ -12,7 +13,7 @@ StrPath = str | os.PathLike[str]
 
 
 def setdefault_calls(module_path: Path) -> Generator[ast.Call, None, None]:
-    """ Yields all calls to `os.environ.setdefault` within a module. """
+    """Yields all calls to `os.environ.setdefault` within a module."""
     with open(module_path, "r") as module_src:
         parsed_module = ast.parse(module_src.read())
     environ_id = "environ"
@@ -22,11 +23,24 @@ def setdefault_calls(module_path: Path) -> Generator[ast.Call, None, None]:
                 if isinstance(name, ast.alias):
                     if name.name == "environ" and name.asname is not None:
                         environ_id = name.asname
-        if isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute) and node.func.attr == "setdefault":
-            if isinstance(node.func.value, ast.Attribute) and node.func.value.attr == "environ":
-                if isinstance(node.func.value.value, ast.Name) and node.func.value.value.id == "os":
+        if (
+            isinstance(node, ast.Call)
+            and isinstance(node.func, ast.Attribute)
+            and node.func.attr == "setdefault"
+        ):
+            if (
+                isinstance(node.func.value, ast.Attribute)
+                and node.func.value.attr == "environ"
+            ):
+                if (
+                    isinstance(node.func.value.value, ast.Name)
+                    and node.func.value.value.id == "os"
+                ):
                     yield node
-            elif isinstance(node.func.value, ast.Name) and node.func.value.id == environ_id:
+            elif (
+                isinstance(node.func.value, ast.Name)
+                and node.func.value.id == environ_id
+            ):
                 yield node
 
 
@@ -41,7 +55,9 @@ def is_root(path: Path) -> bool:
 # review note: the | syntax is new in python 3.10. If older pythons are generally being supported here, the type for
 # dotenv_file should be rewritten as Optional[StrPath] = None and the return type should be annotated as
 # Tuple[str, Optional[str]]
-def find_django_settings_module(*, dotenv_file: StrPath | None = None) -> Tuple[str, str | None]:
+def find_django_settings_module(
+    *, dotenv_file: StrPath | None = None
+) -> Tuple[str, str | None]:
     """
     Find the name of the first settings module from the environment or the closest `manage.py` file.
     Returns: a tuple(source, module name) telling the caller where the module was found and the name of the module.
@@ -75,7 +91,10 @@ def find_django_settings_module(*, dotenv_file: StrPath | None = None) -> Tuple[
         manage_py = search_dir / "manage.py"
         if manage_py.is_file():
             for call in setdefault_calls(manage_py):
-                if len(call.args) == 2 and call.args[0].value == "DJANGO_SETTINGS_MODULE":
+                if (
+                    len(call.args) == 2
+                    and call.args[0].value == "DJANGO_SETTINGS_MODULE"
+                ):
                     settings_module = call.args[1].value
                     source = f"{manage_py.resolve().absolute()}"
         elif is_root(search_dir):
@@ -95,7 +114,10 @@ def find_django_settings_module(*, dotenv_file: StrPath | None = None) -> Tuple[
             manage_py = p / "manage.py"
             if manage_py.is_file():
                 for call in setdefault_calls(manage_py):
-                    if len(call.args) == 2 and call.args[0].value == "DJANGO_SETTINGS_MODULE":
+                    if (
+                        len(call.args) == 2
+                        and call.args[0].value == "DJANGO_SETTINGS_MODULE"
+                    ):
                         settings_module = call.args[1].value
                         source = manage_py.resolve().absolute()
                         break

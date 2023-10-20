@@ -1,9 +1,8 @@
-import pytest
 
-from pathlib import Path
 import os
+from pathlib import Path
 
-from dj_notebook.config_helper import setdefault_calls, find_django_settings_module
+from dj_notebook.config_helper import find_django_settings_module, setdefault_calls
 
 
 class EnvironmentGuard:
@@ -12,11 +11,13 @@ class EnvironmentGuard:
         for k in os.environ.keys():
             self.original_environment[k] = os.environ[k]
         return None
+
     def __exit__(self, exc_type, exc_val, exc_tb):
         for k in os.environ.keys():
             del os.environ[k]
         for k in self.original_environment.keys():
             os.environ[k] = self.original_environment[k]
+
 
 def test_setdefault_calls_fully_qualified():
     script_dir_path = Path(os.path.dirname(os.path.realpath(__file__)))
@@ -64,6 +65,7 @@ def test_find_django_settings_module_dotenv_overrides():
         assert source == "dotenv"
         assert os.environ["DJANGO_SETTINGS_MODULE"] == found
         assert found == "bip.config"
+
 
 def test_find_django_settings_module_os_environment():
     with EnvironmentGuard():
