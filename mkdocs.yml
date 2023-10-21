@@ -8,7 +8,7 @@ theme:
     - search.suggest
     - search.highlight
     - search.share
-  logo: https://dj-notebook.readthedocs.io/en/latest/img/dj-notebook-logo.png
+  logo: img/dj-notebook-logo.png
   icon:
     repo: fontawesome/brands/github
 
@@ -23,6 +23,7 @@ plugins:
               remove_input_tags:
                   - hide_code
     - search
+    - social    
 
 
 nav:
