@@ -21,7 +21,7 @@ The ever-growing list of features:
 
 ```python
 from dj_notebook import activate
-plus = activate('book_store.settings')
+plus = activate()
 plus.User.objects.all()
 ```
 
