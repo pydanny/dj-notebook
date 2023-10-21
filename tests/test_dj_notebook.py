@@ -1,4 +1,6 @@
+import os
 from os import environ
+from pathlib import Path
 from unittest.mock import patch
 
 import django.conf
@@ -6,6 +8,8 @@ import pytest
 from dj_notebook import Plus, activate
 from dj_notebook.shell_plus import DiagramClass
 from django import conf as django_conf
+from django.core.exceptions import ImproperlyConfigured
+from dotenv import load_dotenv
 
 
 class SettingsCleaner:
@@ -184,3 +188,35 @@ def test_warning_when_debug_false(capfd):
         assert "Django is running in production mode with dj-notebook." in [
             str(r.message) for r in record.list
         ]
+
+
+def test_settings_discovery_subdirectory():
+    # when run from the makefile, this gets its cwd set to the project root. for discovery to work as intended, the cwd
+    # needs to be tests
+    old_cwd = os.getcwd()
+    os.chdir(os.path.dirname(os.path.realpath(__file__)))
+    try:
+        with SettingsCleaner():
+            activate()
+            assert environ["DJANGO_SETTINGS_MODULE"] == "book_store.settings"
+    finally:
+        os.chdir(old_cwd)
+
+
+def test_settings_discovery_envfile_invalid_module():
+    # Create a .env file next to this test script with an invalid module, and make sure it fails with an ImproperlyConfigured exception
+    script_dir = os.path.dirname(os.path.realpath(__file__))
+    old_cwd = os.getcwd()
+    os.chdir(script_dir)
+    env_path = Path(script_dir) / ".env"
+    assert not env_path.exists(), "cowardly refusing to overwrite existing .env file"
+    try:
+        with open(env_path, "w") as envfile:
+            envfile.write("DJANGO_SETTINGS_MODULE=blockbuster_video.settings")
+        with SettingsCleaner():
+            load_dotenv(str(env_path))
+            with pytest.raises(ImproperlyConfigured):
+                activate()
+    finally:
+        os.chdir(old_cwd)
+        os.unlink(env_path)
