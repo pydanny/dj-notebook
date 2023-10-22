@@ -15,6 +15,7 @@ from rich.status import Status
 from .config_helper import StrPath, find_django_settings_module
 from .shell_plus import Plus
 
+
 __version__ = "0.6.0"
 
 
