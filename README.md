@@ -44,7 +44,15 @@ Then in the first cell enter:
 ```python
 from dj_notebook import activate
 
-plus = activate("DJANGO_SETTINGS_MODULE_VALUE")
+plus = activate()
+
+# If that throws an error, try one of the following:
+
+# DJANGO_SETTINGS_MODULE_VALUE aka "book_store.settings"
+# plus = activate("DJANGO_SETTINGS_MODULE_VALUE")
+
+# Point to location of dotenv file with Django settings
+# plus = activate(dotenv_file='.env')
 ```
 
 In future cells, you can now load and run Django objects, including the ORM. This three line snippet should give an idea of what you can now do:
