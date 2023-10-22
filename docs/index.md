@@ -29,7 +29,8 @@ plus.User.objects.all()
 <QuerySet [<User: Audrey>, <User: Daniel>]>
 ```
 
+!!! tip "Full Usage"
 
-## Full usage 
+    Learn how to use all the awesome features of dj-notebook in the [usage page](/usage)!
 
-Learn how to use all the awesome features in the [usage page](/usage).
+
