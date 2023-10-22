@@ -1,4 +1,19 @@
 
+# [v0.6.1](https://github.com/pydanny/dj-notebook/releases/tag/v0.6.1)
+
+2023-10-22T05:57:56Z by
+[@pydanny](https://github.com/pydanny)
+
+## ## What's Changed
+
+Fixing borked release caused by inconsistent PyPI trove classifiers
+
+
+**Full Changelog**: https://github.com/pydanny/dj-notebook/compare/v0.6.0...v0.6.1
+
+---
+
+
 # [v0.6.0](https://github.com/pydanny/dj-notebook/releases/tag/v0.6.0)
 
 2023-10-22T05:01:55Z by
@@ -119,3 +134,4 @@ plus.model_graph(plus.User)
 
 
 **Full Changelog**: https://github.com/pydanny/dj-notebook/compare/v0.2.1...v0.2.2
+
