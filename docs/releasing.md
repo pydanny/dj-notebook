@@ -1,6 +1,6 @@
 # Releasing on PyPI
 
-1. Update the `version` in `pyproject.toml`. We use semantic versioning
+1. Update the `version` in `pyproject.toml` and `__version__` in` `src/__init__.py`. We use semantic versioning
 2. Create a branch called `release-x.x.x`
 3. At the command line, run `make tag`
 4. Go to [tags page](https://github.com/pydanny/dj-notebook/tags), choose the most recent tag, and click `Draft a new release`
