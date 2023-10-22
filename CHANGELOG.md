@@ -1,4 +1,33 @@
 
+# [v0.6.0](https://github.com/pydanny/dj-notebook/releases/tag/v0.6.0)
+
+2023-10-22T05:01:55Z by
+[@pydanny](https://github.com/pydanny)
+
+## ## What's Changed
+* Add missing read frame example by @pydanny in https://github.com/pydanny/dj-notebook/pull/107
+* Raise warning if not run in debug by @skyforest in https://github.com/pydanny/dj-notebook/pull/109
+* Added chrisdev to other contributors by @specbeck in https://github.com/pydanny/dj-notebook/pull/110
+* Prep for mypy by @pydanny in https://github.com/pydanny/dj-notebook/pull/112
+* Use ruff for isort by @pydanny in https://github.com/pydanny/dj-notebook/pull/113
+* Document how to install dj-notebook in PyCharm Professional. by @geoffbeier in https://github.com/pydanny/dj-notebook/pull/117
+* Link to pycharm instructions in the docs by @pydanny in https://github.com/pydanny/dj-notebook/pull/119
+* Add support for Python 3.12 by @pydanny in https://github.com/pydanny/dj-notebook/pull/116
+* Remove special case for test harness from application code. by @geoffbeier in https://github.com/pydanny/dj-notebook/pull/120
+* Add social cards to docs by @pydanny in https://github.com/pydanny/dj-notebook/pull/125
+* Remove official support for Python 3.9 by @pydanny in https://github.com/pydanny/dj-notebook/pull/127
+* improve path definitions/config discovery by @geoffbeier in https://github.com/pydanny/dj-notebook/pull/121
+* Document new activate function arguments by @pydanny in https://github.com/pydanny/dj-notebook/pull/129
+* fix broken link to pycharm page from info box on installation page by @geoffbeier in https://github.com/pydanny/dj-notebook/pull/131
+
+## New Contributors
+* @geoffbeier made their first contribution in https://github.com/pydanny/dj-notebook/pull/117
+
+**Full Changelog**: https://github.com/pydanny/dj-notebook/compare/v0.5.0...v0.6.0
+
+---
+
+
 # CHANGELOG
 
 # [v0.5.0](https://github.com/pydanny/dj-notebook/releases/tag/v0.5.0)
