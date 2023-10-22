@@ -11,4 +11,4 @@ pip install dj-notebook
 
 !!! info "Using dj-notebook with PyCharm"
 
-    PyCharm users need to take a few extra steps described [here](/pycharm).
+    PyCharm users need to take a few extra steps described [here](../pycharm).
