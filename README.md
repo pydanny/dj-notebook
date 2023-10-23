@@ -182,8 +182,10 @@ These are people who aren't in our formal git history but should be.
 - [Tim Schilling](https://github.com/tim-schilling) assisted with the `model_graph` method
 - [Charlie Denton](https://github.com/meshy) is responsible for django-schema-graph, which we leverage as part of the `model_graph` feature
 - [Christopher Clarke](https://github.com/chrisdev) built `django-pandas`, which dj-notebook uses
+- [
+Stephen Moore](https://github.com/delfick) for some early work done on the internals of dj-notebook before it was open sourced.
 
-<!-- readme: prestto,evieclutton,tim-schilling,meshy,chrisdev -start -->
+<!-- readme: prestto,evieclutton,tim-schilling,meshy,chrisdev,delfick -start -->
 <table>
 <tr>
     <td align="center">
@@ -222,7 +224,7 @@ These are people who aren't in our formal git history but should be.
         </a>
     </td></tr>
 </table>
-<!-- readme: prestto,evieclutton,tim-schilling,meshy,chrisdev -end -->
+<!-- readme: prestto,evieclutton,tim-schilling,meshy,chrisdev,delfick -end -->
 
 ## Construction
 
