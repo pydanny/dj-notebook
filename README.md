@@ -222,6 +222,13 @@ Stephen Moore](https://github.com/delfick) for some early work done on the inter
             <br />
             <sub><b>Christopher  Clarke</b></sub>
         </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/delfick">
+            <img src="https://avatars.githubusercontent.com/u/109301?v=4" width="100;" alt="delfick"/>
+            <br />
+            <sub><b>Stephen Moore</b></sub>
+        </a>
     </td></tr>
 </table>
 <!-- readme: prestto,evieclutton,tim-schilling,meshy,chrisdev,delfick -end -->
