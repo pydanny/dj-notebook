@@ -31,6 +31,6 @@ plus.User.objects.all()
 
 !!! tip "Full Usage"
 
-    Learn how to use all the awesome features of dj-notebook in the [usage page](/usage)!
+    Learn how to use all the awesome features of dj-notebook in the [usage page](./usage)!
 
 
