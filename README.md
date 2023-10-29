@@ -2,7 +2,7 @@
   <a href="https://dj-notebook.readthedocs.io"><img src="https://dj-notebook.readthedocs.io/en/latest/img/dj-notebook-logo.png" alt="dj-notebook"></a>
 </p>
 
-Django + Jupyter notebooks made easy
+Django + shell_plus + Jupyter notebooks made easy
 
 ---
 
