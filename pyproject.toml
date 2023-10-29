@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "dj_notebook"
 version = "0.6.1"
-description = "A Jupyter notebook with access to objects from the Django ORM is a powerful tool to introspect data and run ad-hoc queries."
+description = "Django + shell_plus + Jupyter notebooks made easy"
 readme = "README.md"
 authors = [
   {name = "Daniel Roy Greenfeld", email = "daniel@feldroy.com"},

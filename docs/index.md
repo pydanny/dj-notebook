@@ -2,7 +2,7 @@
 
 ![dj-notebook logo](img/dj-notebook-logo.png)
 
-_Django + Jupyter notebooks made easy_
+_Django + shell_plus + Jupyter notebooks made easy_
 
 A Jupyter notebook with access to objects from the Django ORM is a powerful tool to introspect data and run ad-hoc queries.
 
