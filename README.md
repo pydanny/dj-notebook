@@ -230,6 +230,14 @@ These are people who aren't in our formal git history but should be.
             <sub><b>Stephen Moore</b></sub>
         </a>
     </td></tr>
+<tr>
+    <td align="center">
+        <a href="https://github.com/django-extensions">
+            <img src="https://avatars.githubusercontent.com/u/65559?v=4" width="100;" alt="django-extensions"/>
+            <br />
+            <sub><b>Django Extensions</b></sub>
+        </a>
+    </td></tr>
 </table>
 <!-- readme: prestto,evieclutton,tim-schilling,meshy,chrisdev,delfick,django-extensions -end -->
 
