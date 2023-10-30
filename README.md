@@ -14,6 +14,8 @@ Full documentation available at [dj-notebook](https://dj-notebook.readthedocs.io
 
 ## Features
 
+The ever-growing list of features:
+
 - Easy ipython notebooks with Django
 - Built-in integration with the imported objects from django-extensions
 - Inheritance diagrams on any object, including ORM models
@@ -89,12 +91,12 @@ Generates this image
 plus.read_frame(plus.User.objects.all())
 ```
 
-## Check out the official documentation for more things you can do!
+## More things you can do!
 
 [dj-notebook official documentation](https://dj-notebook.readthedocs.io/)
 
 
-# Contributors
+## Contributors
 
 <!-- readme: contributors -start -->
 <table>

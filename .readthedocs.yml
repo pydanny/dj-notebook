@@ -6,10 +6,7 @@ build:
     python: "3.10"
   jobs:
     pre_build:
-      # Generate the Sphinx configuration for this Jupyter Book so it builds.
-      - "pip install -r docs/requirements.txt"
-      - "pip install ."
-      - pip install "mkdocs-material[imaging]"
+      - "pip install '.[docs]'"
       - "mkdocs build"
 
 mkdocs:
