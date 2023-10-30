@@ -21,6 +21,7 @@ def main() -> None:
 
 {previous_changelog}
 """
+    new_changelog = new_changelog.replace("## ##", "##")
 
     pathlib.Path("CHANGELOG.md").write_text(new_changelog)
 

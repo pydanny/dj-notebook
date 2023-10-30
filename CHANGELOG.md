@@ -4,7 +4,7 @@
 2023-10-22T05:57:56Z by
 [@pydanny](https://github.com/pydanny)
 
-## ## What's Changed
+## What's Changed
 
 Fixing borked release caused by inconsistent PyPI trove classifiers
 
@@ -19,7 +19,7 @@ Fixing borked release caused by inconsistent PyPI trove classifiers
 2023-10-22T05:01:55Z by
 [@pydanny](https://github.com/pydanny)
 
-## ## What's Changed
+## What's Changed
 * Add missing read frame example by @pydanny in https://github.com/pydanny/dj-notebook/pull/107
 * Raise warning if not run in debug by @skyforest in https://github.com/pydanny/dj-notebook/pull/109
 * Added chrisdev to other contributors by @specbeck in https://github.com/pydanny/dj-notebook/pull/110
@@ -42,15 +42,12 @@ Fixing borked release caused by inconsistent PyPI trove classifiers
 
 ---
 
-
-# CHANGELOG
-
 # [v0.5.0](https://github.com/pydanny/dj-notebook/releases/tag/v0.5.0)
 
 2023-10-10T15:01:07Z by
 [@pydanny](https://github.com/pydanny)
 
-## ## What's Changed
+## What's Changed
 
 ```
 plus.model_graph(plus.User)
@@ -129,7 +126,7 @@ plus.model_graph(plus.User)
 2023-09-26T15:24:15Z by
 [@pydanny](https://github.com/pydanny)
 
-## ## What's Changed
+## What's Changed
 * Correct the release notes by @pydanny in https://github.com/pydanny/dj-notebook/pull/26
 
 
