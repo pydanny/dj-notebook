@@ -37,3 +37,4 @@ nav:
   - Usage: usage.ipynb
   - Contributing: contributing.md
   - Releasing: releasing.md
+  - Changelog: changelog.md
