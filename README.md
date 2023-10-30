@@ -16,12 +16,14 @@ Full documentation available at [dj-notebook](https://dj-notebook.readthedocs.io
 
 The ever-growing list of features:
 
-- Easy ipython notebooks with Django
-- Built-in integration with the imported objects from django-extensions
+- Easy Jupyter notebooks with Django
+- Built-in integration with the imported objects from django-extensions `shell_plus`
+- Saves the state between sessions so you don't need to remember what you did
 - Inheritance diagrams on any object, including ORM models
 - Converts any Django QuerySet to Pandas Dataframe
-- Handy function for displaying mermaid charts in 
+- Handy function for displaying MermaidJS charts 
 - Generates visual maps of model relations
+- Works in the browser, VSCode, PyCharm, Emacs, Vim, and more!
 
 ## Installation
 
@@ -85,7 +87,17 @@ Generates this image
 
 <img src="https://mermaid.ink/img/Y2xhc3NEaWFncmFtCiAgY2xhc3MgZGphbmdvX2NvbnRyaWJfYXV0aF9tb2RlbHNfVXNlclsiZGphbmdvLmNvbnRyaWIuYXV0aC5tb2RlbHM6OlVzZXIiXQogIGRqYW5nb19kYl9tb2RlbHNfdXRpbHNfQWx0ZXJzRGF0YSA8fC0tIGRqYW5nb19kYl9tb2RlbHNfYmFzZV9Nb2RlbAogIGNsYXNzIGRqYW5nb19kYl9tb2RlbHNfdXRpbHNfQWx0ZXJzRGF0YVsiZGphbmdvLmRiLm1vZGVscy51dGlsczo6QWx0ZXJzRGF0YSJdCiAgZGphbmdvX2NvbnRyaWJfYXV0aF9iYXNlX3VzZXJfQWJzdHJhY3RCYXNlVXNlciA8fC0tIGRqYW5nb19jb250cmliX2F1dGhfbW9kZWxzX0Fic3RyYWN0VXNlcgogIGRqYW5nb19jb250cmliX2F1dGhfbW9kZWxzX1Blcm1pc3Npb25zTWl4aW4gPHwtLSBkamFuZ29fY29udHJpYl9hdXRoX21vZGVsc19BYnN0cmFjdFVzZXIKICBjbGFzcyBkamFuZ29fY29udHJpYl9hdXRoX21vZGVsc19BYnN0cmFjdFVzZXJbImRqYW5nby5jb250cmliLmF1dGgubW9kZWxzOjpBYnN0cmFjdFVzZXIiXQogIGNsYXNzIGRqYW5nb19kYl9tb2RlbHNfYmFzZV9Nb2RlbFsiZGphbmdvLmRiLm1vZGVscy5iYXNlOjpNb2RlbCJdCiAgY2xhc3MgZGphbmdvX2NvbnRyaWJfYXV0aF9iYXNlX3VzZXJfQWJzdHJhY3RCYXNlVXNlclsiZGphbmdvLmNvbnRyaWIuYXV0aC5iYXNlX3VzZXI6OkFic3RyYWN0QmFzZVVzZXIiXQogIGRqYW5nb19kYl9tb2RlbHNfYmFzZV9Nb2RlbCA8fC0tIGRqYW5nb19jb250cmliX2F1dGhfYmFzZV91c2VyX0Fic3RyYWN0QmFzZVVzZXIKICBkamFuZ29fZGJfbW9kZWxzX2Jhc2VfTW9kZWwgPHwtLSBkamFuZ29fY29udHJpYl9hdXRoX21vZGVsc19QZXJtaXNzaW9uc01peGluCiAgZGphbmdvX2NvbnRyaWJfYXV0aF9tb2RlbHNfQWJzdHJhY3RVc2VyIDx8LS0gZGphbmdvX2NvbnRyaWJfYXV0aF9tb2RlbHNfVXNlcgogIGNsYXNzIGRqYW5nb19jb250cmliX2F1dGhfbW9kZWxzX1Blcm1pc3Npb25zTWl4aW5bImRqYW5nby5jb250cmliLmF1dGgubW9kZWxzOjpQZXJtaXNzaW9uc01peGluIl0="/>
 
+Here's another useful diagram:
+
+```python
+plus.model_graph(plus.User)
+```
+
+<image src="https://mermaid.ink/img/Zmxvd2NoYXJ0IFRECiAgTG9nRW50cnkgLS0tIFVzZXIKICBVc2VyIC0tLSBBYnN0cmFjdFVzZXIKICBVc2VyIC0tLSBHcm91cAogIFVzZXIgLS0tIFBlcm1pc3Npb24K"/>
+
 ## QuerySet to Dataframe
+
+Want to convert a Django query to a Pandas Dataframe? We got you covered.
 
 ```python
 plus.read_frame(plus.User.objects.all())
