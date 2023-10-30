@@ -22,9 +22,11 @@ plugins:
           remove_tag_config:
               remove_input_tags:
                   - hide_code
+    - include-markdown:
+          start: <!--start-->
+          end: <!--end-->                    
     - search
     - social    
-
 
 nav:
   - Introduction: index.md
