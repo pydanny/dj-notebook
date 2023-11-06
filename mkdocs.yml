@@ -18,23 +18,44 @@ markdown_extensions:
   - pymdownx.superfences
 
 plugins:
-    - mkdocs-jupyter:
-          remove_tag_config:
-              remove_input_tags:
-                  - hide_code
-    - include-markdown:
-          start: <!--start-->
-          end: <!--end-->                    
-    - search
-    - social    
+  - mkdocs-jupyter:
+      remove_tag_config:
+        remove_input_tags:
+          - hide_code
+  - include-markdown:
+      start: <!--start-->
+      end: <!--end-->
+  - search
+  - social
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            extensions:
+              - griffe_typingdoc
+            show_root_heading: true
+            show_if_no_docstring: true
+            inherited_members: true
+            members_order: source
+            separate_signature: true
+            unwrap_annotated: true
+            merge_init_into_class: true
+            docstring_section_style: spacy
+            signature_crossrefs: true
+            show_symbol_type_heading: true
+            show_symbol_type_toc: true
+
 
 nav:
   - Introduction: index.md
   - Installation:
-    - Installation: installation.md
-    - Using with PyCharm: pycharm.md
+      - Installation: installation.md
+      - Using with PyCharm: pycharm.md
   - Activation: activation.md
   - Usage: usage.ipynb
+  - Reference (Code API): 
+      - reference/index.md
+      - reference/plus.md
   - Contributing: contributing.md
   - Releasing: releasing.md
   - Changelog: changelog.md

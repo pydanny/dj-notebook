@@ -6,7 +6,7 @@ build:
     python: "3.10"
   jobs:
     pre_build:
-      - "pip install '.[docs]'"
+      - "pip install '.[dev]'"
       - "mkdocs build"
 
 mkdocs:

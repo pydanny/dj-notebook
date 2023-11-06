@@ -7,9 +7,13 @@ changelog:  # Install gh cli and jq first
 	python utils/update_changelog.py
 	rm changelog.json
 
-lint:
+format:
 	black .
 	ruff check . --fix
+
+lint:
+	black .
+	ruff check .
 
 mypy:
 	mypy .
@@ -26,3 +30,6 @@ test:
 	coverage run -m pytest .
 	coverage report -m
 	coverage html
+
+install:
+	pip install -e '.[dev]'
