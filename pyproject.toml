@@ -41,24 +41,19 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-test = [
-    "django",
-    "django-extensions",
-    "ipython",  
+dev = [
     "black",  # code auto-formatting
     "black[jupyter]",
     "coverage",  # testing
+    "griffe-typingdoc==0.2.2",
+    "mkdocs-material",
+    "mkdocs-jupyter",
+    "mkdocs-material[imaging]",
+    "mkdocs-include-markdown-plugin",
+    "mkdocstrings[python]>=0.18",    
     "mypy",  # linting
     "pytest",  # testing
     "ruff"  # linting
-]
-docs = [
-  "mkdocs-material",
-  "mkdocs-jupyter",
-  "mkdocs-material[imaging]",
-  "mkdocs-include-markdown-plugin",
-  "mkdocstrings[python]>=0.18",
-  "griffe-typingdoc==0.2.2"
 ]
 
 [project.urls]
