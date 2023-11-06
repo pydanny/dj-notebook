@@ -26,3 +26,6 @@ test:
 	coverage run -m pytest .
 	coverage report -m
 	coverage html
+
+install:
+	pip install -e '.[test,docs]'
