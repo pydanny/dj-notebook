@@ -53,7 +53,8 @@ dev = [
     "mkdocstrings[python]>=0.18",    
     "mypy",  # linting
     "pytest",  # testing
-    "ruff"  # linting
+    "ruff",  # linting
+    "yamlfix"  # fixing the YAML
 ]
 
 [project.urls]

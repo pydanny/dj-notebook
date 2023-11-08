@@ -1,15 +1,12 @@
+---
 name: CI
-
 on: [push]
-
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.10", "3.11", "3.12"]
-
+        python-version: ['3.10', '3.11', '3.12']
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python ${{ matrix.python-version }}
@@ -22,8 +19,8 @@ jobs:
            pip install '.[dev]'
       - name: Lint with ruff and black
         run: |
-          # stop the build if there are Python syntax errors or undefined names
+          # stop the build if there are linting errors
           make lint
       - name: Test with pytest
-        run: |
+        run: |-
           pytest

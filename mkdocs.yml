@@ -1,3 +1,4 @@
+---
 site_name: dj-notebook
 repo_url: https://github.com/pydanny/dj-notebook
 theme:
@@ -11,17 +12,14 @@ theme:
   logo: img/dj-notebook-logo.png
   icon:
     repo: fontawesome/brands/github
-
 markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
-
 plugins:
   - mkdocs-jupyter:
       remove_tag_config:
-        remove_input_tags:
-          - hide_code
+        remove_input_tags: [hide_code]
   - include-markdown:
       start: <!--start-->
       end: <!--end-->
@@ -31,8 +29,7 @@ plugins:
       handlers:
         python:
           options:
-            extensions:
-              - griffe_typingdoc
+            extensions: [griffe_typingdoc]
             show_root_heading: true
             show_if_no_docstring: true
             inherited_members: true
@@ -44,8 +41,6 @@ plugins:
             signature_crossrefs: true
             show_symbol_type_heading: true
             show_symbol_type_toc: true
-
-
 nav:
   - Introduction: index.md
   - Installation:
@@ -53,9 +48,7 @@ nav:
       - Using with PyCharm: pycharm.md
   - Activation: activation.md
   - Usage: usage.ipynb
-  - Reference (Code API): 
-      - reference/index.md
-      - reference/plus.md
+  - Reference (Code API): [reference/index.md, reference/plus.md]
   - Contributing: contributing.md
   - Releasing: releasing.md
   - Changelog: changelog.md

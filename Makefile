@@ -10,10 +10,12 @@ changelog:  # Install gh cli and jq first
 format:
 	black .
 	ruff check . --fix
+	yamlfix .
 
 lint:
 	black .
 	ruff check .
+	yamlfix .
 
 mypy:
 	mypy .
