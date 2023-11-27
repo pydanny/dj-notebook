@@ -13,6 +13,8 @@ As it accesses the database, it requires that:
 
 
 import base64
+import io
+import pathlib
 import typing
 
 import IPython
@@ -142,6 +144,14 @@ class Plus:
                 f"  {edge.source.split('.')[-1]} --- {edge.target.split('.')[-1]}\n"
             )
         display_mermaid(output)
+
+    def csv_to_df(self, filepath_or_string: pathlib.Path | str) -> pd.DataFrame:
+        """Read a CSV file into a Pandas DataFrame."""
+        if isinstance(filepath_or_string, pathlib.Path):
+            return pd.read_csv(filepath_or_string)
+        buffer = io.StringIO(filepath_or_string)        
+        return pd.read_csv(buffer)
+
 
 
 def get_node_for_model(graph, model: django_models.Model):
