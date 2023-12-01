@@ -147,11 +147,13 @@ class Plus:
 
     def csv_to_df(self, filepath_or_string: pathlib.Path | str) -> pd.DataFrame:
         """Read a CSV file into a Pandas DataFrame."""
+        # Process as a Path object
         if isinstance(filepath_or_string, pathlib.Path):
             return pd.read_csv(filepath_or_string)
-        buffer = io.StringIO(filepath_or_string)        
-        return pd.read_csv(buffer)
 
+        # Process as a string, which we convert to a filebuffer
+        buffer = io.StringIO(filepath_or_string)
+        return pd.read_csv(buffer)
 
 
 def get_node_for_model(graph, model: django_models.Model):

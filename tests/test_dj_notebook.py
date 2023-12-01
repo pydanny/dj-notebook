@@ -4,6 +4,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 import django.conf
+import pandas
 import pytest
 from dj_notebook import Plus, activate
 from dj_notebook.shell_plus import DiagramClass
@@ -163,6 +164,31 @@ def test_read_frame(mock_read_frame):
     # assert mocked query called
     mock_read_frame.assert_called_once_with(mock_qs)
     assert result == "Mocked DataFrame"
+
+
+def test_csv_to_df():
+    """
+    Tests the `csv_to_df` method of the `Plus`
+    class to ensure it returns a CSV.
+
+    The test mocks this function to return "Mocked DataFrame"
+    and checks if the `Plus` method returns this when given a mock CSV.
+    """
+    plus_instance = Plus(helpers={})
+    csv_path = Path("tests/sample.csv")
+    with open(csv_path) as f:
+        csv_string = f.read()
+
+    result_from_string = plus_instance.csv_to_df(csv_string)
+    result_from_path = plus_instance.csv_to_df(csv_path)
+
+    # assert results are dataframes
+    assert isinstance(result_from_string, pandas.DataFrame)
+    assert isinstance(result_from_path, pandas.DataFrame)
+
+    # assert content is correct
+    assert result_from_string.at[0, "Name"] == "A"
+    assert result_from_path.at[0, "Name"] == "A"
 
 
 def test_warning_when_debug_false(capfd):
