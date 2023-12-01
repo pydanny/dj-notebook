@@ -6,9 +6,12 @@ Here's the reference for the `Plus`  class, with all its parameters, attributes,
     options:
         show_source: true
         members:
+            - csv_to_df
             - diagram    
             - mermaid                            
             - model_graph
+            - model_graph_schema            
             - print
             - read_frame
-            - model_graph_schema
+
+
