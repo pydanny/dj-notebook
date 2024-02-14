@@ -55,28 +55,34 @@ def is_root(path: Path) -> bool:
 # dotenv_file should be rewritten as Optional[StrPath] = None and the return type should be annotated as
 # Tuple[str, Optional[str]]
 def find_django_settings_module(
-    *, dotenv_file: StrPath | None = None
+    *,
+    dotenv_file: StrPath | None = None,
+    search_dir: StrPath | None = None,
 ) -> Tuple[str, str | None]:
     """
     Find the name of the first settings module from the environment or the closest `manage.py` file.
     Returns: a tuple(source, module name) telling the caller where the module was found and the name of the module.
 
-    The optional, keyword-only argument `dotenv_file` will be explicitly loaded prior to searching the environment,
-    if supplied.
+    Optional keyword-only arguments:
+        dotenv_file: Absolute or relative path to .env file, loaded prior to searching the environment.
+        search_dir: Absolute or relative path to the directory to start searching for a `manage.py` file, used if
+            `dotenv_file` is `None`.
+    If both `dotenv_file` and `search_dir` are `None`, the environment variable DJANGO_SETTINGS_MODULE is checked,
+    and the current working directory (and its parents and immediate subdirectories) is searched for a `manage.py` file.
     """
+    settings_module = None
     # First see if this has either already been set in the environment or put in a .env file that python-dotenv will
     # treat that way
-    settings_module = None
-    if not dotenv_file:
-        source = "environment"
-        settings_module = os.environ.get("DJANGO_SETTINGS_MODULE", None)
-    if not settings_module:
+    if dotenv_file:
         # load with override=True if the caller has specified a dotenv file explicitly
         source = "dotenv"
         load_dotenv(dotenv_file, override=bool(dotenv_file))
-    settings_module = os.environ.get("DJANGO_SETTINGS_MODULE", None)
+        settings_module = os.environ.get("DJANGO_SETTINGS_MODULE", None)
+    elif not search_dir:
+        source = "environment"
+        settings_module = os.environ.get("DJANGO_SETTINGS_MODULE", None)
     # If we get nothing from the environment, look for a `manage.py` script containing a call that sets a default in the
-    # current working directory or in any parent. This should accommodate the common pattern of
+    # search directory, the current working directory, or any parent. This should accommodate the common pattern of
     # - app1
     # - app2
     # - project
@@ -85,9 +91,9 @@ def find_django_settings_module(
     # - notebooks
     # --> analysis_notebook.ipynb
     # - manage.py
-    search_dir = Path.cwd().resolve()
+    current_search_dir = Path(search_dir or Path.cwd()).resolve()
     while settings_module is None:
-        manage_py = search_dir / "manage.py"
+        manage_py = current_search_dir / "manage.py"
         if manage_py.is_file():
             for call in setdefault_calls(manage_py):
                 if (
@@ -96,12 +102,12 @@ def find_django_settings_module(
                 ):
                     settings_module = call.args[1].value
                     source = f"{manage_py.resolve().absolute()}"
-        elif is_root(search_dir):
+        elif is_root(current_search_dir):
             break
         else:
-            search_dir = search_dir.parent.resolve()
+            current_search_dir = current_search_dir.parent.resolve()
     if not settings_module:
-        # Finally, go one level down into children of the current working directory to see if a `manage.py` with a default
+        # Finally, go one level down into children of the search directory to see if a `manage.py` with a default
         # for `DJANGO_SETTINGS_MODULE` can be found there. This accommodates the common pattern of
         # - analysis.ipynb
         # - src
@@ -109,7 +115,10 @@ def find_django_settings_module(
         # --> project
         # ----> settings.py
         # ...
-        for p in [Path(subdir) for subdir in os.scandir(Path.cwd())]:
+        for p in [
+            Path(subdir)
+            for subdir in os.scandir(Path(search_dir or Path.cwd()).resolve())
+        ]:
             manage_py = p / "manage.py"
             if manage_py.is_file():
                 for call in setdefault_calls(manage_py):
