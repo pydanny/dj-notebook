@@ -20,7 +20,7 @@ __version__ = "0.6.1"
 
 
 def activate(
-    settings: str = None,
+    settings: str | None = None,
     quiet_load: bool = True,
     *,
     dotenv_file: StrPath | None = None,
