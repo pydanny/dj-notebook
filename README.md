@@ -39,7 +39,7 @@ pip install dj_notebook
 
 First, find your project's `manage.py` file and open it. Copy whatever is being set to `DJANGO_SETTINGS_MODULE` into your clipboard.
 
-Create an ipython notebook in the same directory as `manage.py`. In VSCode,
+Create an ipython notebook in the same directory as `manage.py`, or another directory of your choosing. In VSCode,
 simply add a new `.ipynb` file. If using Jupyter Lab, use the `File -> New ->
 Notebook` menu option.
 
@@ -49,6 +49,9 @@ Then in the first cell enter:
 from dj_notebook import activate
 
 plus = activate()
+
+# If you have created your notebook in a different directory, instead do:
+# plus = activate(search_dir="/path/to/your/project")
 
 # If that throws an error, try one of the following:
 

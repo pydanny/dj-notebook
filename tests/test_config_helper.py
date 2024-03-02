@@ -89,3 +89,32 @@ def test_find_django_settings_module_os_environment():
         assert source == "environment"
         assert os.environ["DJANGO_SETTINGS_MODULE"] == found
         assert found == "something.else"
+
+
+def test_find_django_settings_module_remote_path():
+    script_dir_path = Path(os.path.dirname(os.path.realpath(__file__)))
+    django_project_path = script_dir_path / "django_test_project"
+    old_cwd = os.getcwd()
+    # Change to a directory that is not the django project or adjacent.
+    os.chdir(script_dir_path / "..")
+    with EnvironmentGuard():
+        source, found = find_django_settings_module(search_dir=django_project_path)
+        assert source == str(django_project_path / "manage.py")
+        assert found == "book_store.settings"
+    # Change to the parent directory in order to search children
+    source, found = None, None
+    with EnvironmentGuard():
+        source, found = find_django_settings_module(
+            search_dir=django_project_path / ".."
+        )
+        assert source == str(django_project_path / "manage.py")
+        assert found == "book_store.settings"
+    # Change to a child directory in order to search parents
+    source, found = None, None
+    with EnvironmentGuard():
+        source, found = find_django_settings_module(
+            search_dir=django_project_path / "book_store"
+        )
+        assert source == str(django_project_path / "manage.py")
+        assert found == "book_store.settings"
+    os.chdir(old_cwd)

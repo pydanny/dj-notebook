@@ -20,7 +20,11 @@ __version__ = "0.6.1"
 
 
 def activate(
-    settings: str = None, quiet_load: bool = True, *, dotenv_file: StrPath | None = None
+    settings: str | None = None,
+    quiet_load: bool = True,
+    *,
+    dotenv_file: StrPath | None = None,
+    search_dir: StrPath | None = None,
 ) -> Plus:
     with Status(
         "Loading dj-notebook...\n  Use Plus.print() to see what's been loaded.",
@@ -31,7 +35,8 @@ def activate(
             os.environ["DJANGO_SETTINGS_MODULE"] = settings
         else:
             source, discovered_settings = find_django_settings_module(
-                dotenv_file=dotenv_file
+                dotenv_file=dotenv_file,
+                search_dir=search_dir,
             )
             if discovered_settings:
                 if not quiet_load:
