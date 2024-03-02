@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dj_notebook"
-version = "0.6.1"
+version = "0.7.0"
 description = "Django + shell_plus + Jupyter notebooks made easy"
 readme = "README.md"
 authors = [
