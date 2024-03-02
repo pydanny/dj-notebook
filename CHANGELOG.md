@@ -1,3 +1,23 @@
+# [v0.7.0](https://github.com/pydanny/dj-notebook/releases/tag/v0.7.0)
+
+## What's Changed - New Feature
+
+* Allow notebooks in other locations by @nmpowell in https://github.com/pydanny/dj-notebook/pull/162
+
+## What's Changed
+
+* Change byline by @pydanny in https://github.com/pydanny/dj-notebook/pull/144
+* Add django-extensions to contributors by @pydanny in https://github.com/pydanny/dj-notebook/pull/145
+* Add mkdocs include so README is the index by @pydanny in https://github.com/pydanny/dj-notebook/pull/150
+* Add changelog to docs site by @pydanny in https://github.com/pydanny/dj-notebook/pull/151
+* Add code reference using mkdocstrings by @pydanny in https://github.com/pydanny/dj-notebook/pull/154
+* Lint the yaml and add to CI by @pydanny in https://github.com/pydanny/dj-notebook/pull/158
+* Add csv_to_df function by @pydanny in https://github.com/pydanny/dj-notebook/pull/160
+
+## New Contributors
+* @nmpowell made their first contribution in https://github.com/pydanny/dj-notebook/pull/162
+
+**Full Changelog**: https://github.com/pydanny/dj-notebook/compare/v0.6.1...v0.7.0
 
 # [v0.6.1](https://github.com/pydanny/dj-notebook/releases/tag/v0.6.1)
 

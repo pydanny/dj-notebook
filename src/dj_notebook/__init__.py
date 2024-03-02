@@ -16,7 +16,7 @@ from .config_helper import StrPath, find_django_settings_module
 from .shell_plus import Plus
 
 
-__version__ = "0.6.1"
+__version__ = "0.7.0"
 
 
 def activate(
